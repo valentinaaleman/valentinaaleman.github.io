@@ -92,36 +92,21 @@ body {
   width: 100%;
 }
 
-.brand-group {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.brand-logo {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.logo-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: 0.08em;
-  color: var(--color-ink);
-}
-
-.logo-role {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  color: var(--color-ink-muted);
-}
-
 .site-nav {
   margin-left: auto;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-radio-item {
+  display: flex;
+  align-items: center;
 }
 
 /* Radio Player Widget */
@@ -134,7 +119,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.45rem 0.9rem;
+  padding: 0.35rem 0.75rem;
   background-color: transparent;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
@@ -145,6 +130,7 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   transition: all var(--transition-fast);
+  line-height: 1;
 }
 
 .radio-btn:hover {
@@ -175,13 +161,6 @@ body {
 .radio-icon {
   font-size: 0.7rem;
   line-height: 1;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  justify-content: flex-end;
 }
 
 .nav-link {
