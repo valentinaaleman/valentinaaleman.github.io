@@ -288,8 +288,8 @@ body {
    HERO SECTION
    ========================================================================== */
 .section-hero {
-  padding: 8rem 0 6.5rem 0;
-  min-height: calc(88vh - var(--header-height));
+  padding: 4rem 0 5rem 0;
+  min-height: auto;
   display: flex;
   align-items: center;
 }
@@ -297,28 +297,6 @@ body {
 .hero-container {
   display: flex;
   flex-direction: column;
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-}
-
-.badge-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--color-ink);
-}
-
-.eyebrow-text {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.16em;
-  color: var(--color-ink-muted);
-  text-transform: uppercase;
 }
 
 .hero-image-wrapper {
