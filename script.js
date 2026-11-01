@@ -1,37 +1,12 @@
 /**
  * Valentina Alemán Portfolio Boilerplate - Client Logic
- * Handles two-color inversion, copy-to-clipboard, and scroll observing.
+ * Handles copy-to-clipboard and scroll observing.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initThemeToggle();
   initCopyEmail();
   initScrollSpy();
 });
-
-/**
- * 2-Color Palette Invert Mode
- */
-function initThemeToggle() {
-  const toggleBtn = document.getElementById('themeToggle');
-  if (!toggleBtn) return;
-
-  const currentTheme = localStorage.getItem('vab_theme') || 'dark';
-  document.body.setAttribute('data-theme', currentTheme);
-
-  toggleBtn.addEventListener('click', () => {
-    const isCurrentlyInverted = document.body.getAttribute('data-theme') === 'inverted';
-    const nextTheme = isCurrentlyInverted ? 'dark' : 'inverted';
-    
-    document.body.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('vab_theme', nextTheme);
-
-    const toggleText = toggleBtn.querySelector('.toggle-text');
-    if (toggleText) {
-      toggleText.textContent = nextTheme === 'inverted' ? '2-COLOR NORMAL' : '2-COLOR INVERT';
-    }
-  });
-}
 
 /**
  * Copy email to clipboard with UI feedback

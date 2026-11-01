@@ -1,23 +1,28 @@
 /* ==========================================================================
    VALENTINA ALEMÁN — PORTFOLIO BOILERPLATE
-   Two-Color Sectioned Architecture (Dark Ink / Warm Sand Cream)
+   Two-Tone Sectioned Architecture (Warm Cream & Bone White)
    ========================================================================== */
 
 :root {
-  /* Primary Two-Color Palette */
-  --color-dark: #111213;
-  --color-dark-alt: #1a1b1d;
-  --color-dark-border: rgba(244, 240, 232, 0.15);
-  --color-dark-muted: #95928d;
-  
-  --color-cream: #f4f0e8;
-  --color-cream-alt: #eae4d7;
-  --color-cream-border: rgba(17, 18, 19, 0.15);
+  /* Editorial Two-Tone Palette: Cream & Bone White */
+  --color-cream: #f4f0e8;          /* Warm Cream / Sand Canvas */
+  --color-cream-alt: #eae4d7;      /* Slightly deeper cream accent */
+  --color-cream-border: rgba(30, 28, 25, 0.12);
   --color-cream-muted: #6e6a64;
 
+  --color-bone: #fbf9f5;           /* Bone White Canvas */
+  --color-bone-alt: #ffffff;        /* Pure card white */
+  --color-bone-border: rgba(30, 28, 25, 0.08);
+  --color-bone-muted: #7d7870;
+
+  /* Typography / Text Colors (Dark Charcoal for High Legibility) */
+  --color-ink: #161513;            /* Deep Ink Charcoal for headings & body */
+  --color-ink-light: #383530;      /* Secondary text */
+  --color-ink-muted: #6e6a64;      /* Subtitles & metadata */
+  
   /* Accent Highlight (From Canva Brand Spec) */
-  --color-accent: #d5d71a;
-  --color-accent-text: #111213;
+  --color-accent: #c2c416;         /* Slightly grounded chartreuse */
+  --color-accent-text: #161513;
 
   /* Typography */
   --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -49,8 +54,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-dark);
-  color: var(--color-cream);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -70,10 +75,10 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(17, 18, 19, 0.92);
+  background-color: rgba(244, 240, 232, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-dark-border);
+  border-bottom: 1px solid var(--color-cream-border);
   height: var(--header-height);
   display: flex;
   align-items: center;
@@ -99,14 +104,14 @@ body {
   font-weight: 700;
   font-size: 1.15rem;
   letter-spacing: 0.08em;
-  color: var(--color-cream);
+  color: var(--color-ink);
 }
 
 .logo-role {
   font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 0.12em;
-  color: var(--color-accent);
+  color: var(--color-ink-muted);
 }
 
 .nav-links {
@@ -120,7 +125,7 @@ body {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
   text-decoration: none;
   transition: color var(--transition-fast);
   position: relative;
@@ -129,7 +134,7 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-cream);
+  color: var(--color-ink);
 }
 
 .nav-link::after {
@@ -139,7 +144,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--color-accent);
+  background-color: var(--color-ink);
   transition: width var(--transition-fast);
 }
 
@@ -152,35 +157,6 @@ body {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  border: 1px solid var(--color-dark-border);
-  color: var(--color-cream);
-  padding: 0.45rem 0.85rem;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  cursor: pointer;
-  letter-spacing: 0.08em;
-  transition: all var(--transition-fast);
-}
-
-.theme-toggle:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.toggle-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--color-accent);
 }
 
 /* Buttons */
@@ -207,40 +183,40 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--color-accent);
-  color: var(--color-accent-text);
+  background-color: var(--color-ink);
+  color: var(--color-bone);
   font-weight: 600;
 }
 
 .btn-primary:hover {
-  background-color: #e2e434;
+  background-color: #302e2b;
   transform: translateY(-1px);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--color-cream);
-  border-color: var(--color-dark-border);
+  color: var(--color-ink);
+  border-color: var(--color-cream-border);
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-cream);
-  background-color: rgba(244, 240, 232, 0.05);
+  border-color: var(--color-ink);
+  background-color: rgba(22, 21, 19, 0.05);
 }
 
 .btn-outline {
   background-color: transparent;
-  color: var(--color-cream);
-  border-color: var(--color-dark-border);
+  color: var(--color-ink);
+  border-color: var(--color-cream-border);
 }
 
 .btn-outline:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  border-color: var(--color-ink);
+  background-color: rgba(22, 21, 19, 0.05);
 }
 
 /* ==========================================================================
-   SECTIONS: TWO-COLOR DIVISIONS
+   SECTIONS: TWO-TONE ALTERNATING (Cream & Bone White)
    ========================================================================== */
 .section {
   padding: 6.5rem 0;
@@ -255,36 +231,29 @@ body {
   text-transform: uppercase;
   margin-bottom: 2rem;
   display: inline-block;
-}
-
-/* Section Dark (Color A) */
-.section-dark {
-  background-color: var(--color-dark);
-  color: var(--color-cream);
-}
-
-.section-dark .section-tag {
-  color: var(--color-accent);
-}
-
-.section-dark .section-title {
-  color: var(--color-cream);
-}
-
-/* Section Light (Color B) */
-.section-light {
-  background-color: var(--color-cream);
-  color: var(--color-dark);
-}
-
-.section-light .section-tag {
-  color: #55514b;
-  border-left: 3px solid var(--color-dark);
+  color: var(--color-ink-muted);
+  border-left: 3px solid var(--color-ink);
   padding-left: 0.5rem;
 }
 
+/* Section Dark (Now Color A: Warm Cream) */
+.section-dark {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+}
+
+.section-dark .section-title {
+  color: var(--color-ink);
+}
+
+/* Section Light (Now Color B: Bone White) */
+.section-light {
+  background-color: var(--color-bone);
+  color: var(--color-ink);
+}
+
 .section-light .section-title {
-  color: var(--color-dark);
+  color: var(--color-ink);
 }
 
 .section-header-row {
@@ -302,12 +271,13 @@ body {
   line-height: 1.12;
   font-weight: 700;
   letter-spacing: -0.02em;
+  color: var(--color-ink);
 }
 
 .section-description {
   max-width: 480px;
   font-size: 1.05rem;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
 }
 
 .section-light .section-description {
@@ -340,15 +310,14 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--color-accent);
-  box-shadow: 0 0 10px rgba(213, 215, 26, 0.6);
+  background-color: var(--color-ink);
 }
 
 .eyebrow-text {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   letter-spacing: 0.16em;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
   text-transform: uppercase;
 }
 
@@ -358,9 +327,9 @@ body {
   margin: 0 0 2.5rem 0;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--color-dark-border);
-  background-color: var(--color-dark-alt);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--color-cream-border);
+  background-color: var(--color-bone-alt);
+  box-shadow: 0 12px 32px rgba(22, 21, 19, 0.08);
 }
 
 .hero-image {
@@ -378,11 +347,11 @@ body {
   letter-spacing: -0.03em;
   max-width: 1040px;
   margin-bottom: 2rem;
-  color: var(--color-cream);
+  color: var(--color-ink);
 }
 
 .hero-title .highlight {
-  color: var(--color-accent);
+  color: var(--color-ink);
   font-style: italic;
   font-weight: 600;
 }
@@ -390,7 +359,7 @@ body {
 .accent-bar {
   width: 90px;
   height: 6px;
-  background-color: var(--color-accent);
+  background-color: var(--color-ink);
   margin-bottom: 2.5rem;
 }
 
@@ -398,7 +367,7 @@ body {
   font-family: var(--font-sans);
   font-size: clamp(1.15rem, 2vw, 1.45rem);
   line-height: 1.55;
-  color: #cfcac0;
+  color: var(--color-ink-light);
   max-width: 880px;
   margin-bottom: 3.5rem;
   font-weight: 300;
@@ -411,7 +380,7 @@ body {
   flex-wrap: wrap;
   gap: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-dark-border);
+  border-top: 1px solid var(--color-cream-border);
 }
 
 .status-pill {
@@ -420,14 +389,14 @@ body {
   gap: 0.75rem;
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #2ecc71;
+  background-color: #2e7d32;
   animation: pulse 2s infinite;
 }
 
@@ -493,7 +462,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-dark);
+  color: var(--color-ink);
   background-color: var(--color-cream-alt);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
@@ -505,18 +474,18 @@ body {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.35rem;
-  color: var(--color-dark);
+  color: var(--color-ink);
 }
 
 .principle-item p {
   font-size: 0.95rem;
-  color: var(--color-cream-muted);
+  color: var(--color-ink-muted);
   margin-bottom: 0;
   line-height: 1.5;
 }
 
 /* ==========================================================================
-   SERVICES / WHAT I BRING (Color A - Dark)
+   SERVICES / WHAT I BRING (Color A: Warm Cream)
    ========================================================================== */
 .services-grid {
   display: grid;
@@ -525,24 +494,27 @@ body {
 }
 
 .service-card {
-  background-color: var(--color-dark-alt);
-  border: 1px solid var(--color-dark-border);
+  background-color: var(--color-bone);
+  border: 1px solid var(--color-cream-border);
   padding: 2.5rem 2rem;
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(22, 21, 19, 0.04);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .service-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-accent);
+  border-color: var(--color-ink);
+  box-shadow: 0 10px 24px rgba(22, 21, 19, 0.08);
 }
 
 .card-num {
   font-family: var(--font-mono);
   font-size: 0.9rem;
-  color: var(--color-accent);
+  font-weight: 700;
+  color: var(--color-ink);
   margin-bottom: 1.5rem;
 }
 
@@ -550,7 +522,7 @@ body {
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--color-cream);
+  color: var(--color-ink);
   margin-bottom: 0.5rem;
 }
 
@@ -558,7 +530,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
@@ -566,14 +538,14 @@ body {
 .card-description {
   font-size: 0.98rem;
   line-height: 1.6;
-  color: #b5b1aa;
+  color: var(--color-ink-light);
   margin-bottom: 1.75rem;
   flex-grow: 1;
 }
 
 .card-bullets {
   list-style: none;
-  border-top: 1px solid var(--color-dark-border);
+  border-top: 1px solid var(--color-cream-border);
   padding-top: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -583,7 +555,7 @@ body {
 .card-bullets li {
   font-family: var(--font-mono);
   font-size: 0.76rem;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
   position: relative;
   padding-left: 1rem;
 }
@@ -592,11 +564,11 @@ body {
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--color-accent);
+  color: var(--color-ink);
 }
 
 /* ==========================================================================
-   WORK / CASE STUDIES (Color B - Cream)
+   WORK / CASE STUDIES (Color B: Bone White)
    ========================================================================== */
 .work-filter-note {
   font-family: var(--font-mono);
@@ -615,17 +587,17 @@ body {
 }
 
 .case-card {
-  background-color: #fff;
+  background-color: var(--color-bone-alt);
   border: 1px solid var(--color-cream-border);
   border-radius: var(--radius-md);
   padding: 3rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 20px rgba(22, 21, 19, 0.04);
   transition: box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 .case-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(22, 21, 19, 0.08);
 }
 
 .case-header {
@@ -644,14 +616,14 @@ body {
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-dark);
+  color: var(--color-ink);
 }
 
 .case-discipline {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.05em;
-  color: var(--color-cream-muted);
+  color: var(--color-ink-muted);
   text-transform: uppercase;
 }
 
@@ -665,7 +637,7 @@ body {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
-  color: var(--color-dark);
+  color: var(--color-ink);
   margin-bottom: 0.4rem;
   letter-spacing: -0.01em;
 }
@@ -675,20 +647,20 @@ body {
   font-size: 1.15rem;
   font-style: italic;
   font-weight: 500;
-  color: #3b3936;
+  color: var(--color-ink-light);
   margin-bottom: 1.5rem;
 }
 
 .case-summary {
   font-size: 1.05rem;
   line-height: 1.6;
-  color: #4a4742;
+  color: var(--color-ink-light);
   margin-bottom: 2rem;
 }
 
 .case-quote {
   background-color: var(--color-cream);
-  border-left: 3px solid var(--color-dark);
+  border-left: 3px solid var(--color-ink);
   padding: 1.5rem;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
@@ -697,7 +669,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
-  color: var(--color-cream-muted);
+  color: var(--color-ink-muted);
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -706,13 +678,13 @@ body {
   font-family: var(--font-display);
   font-size: 1.18rem;
   font-weight: 600;
-  color: var(--color-dark);
+  color: var(--color-ink);
   margin-bottom: 0.35rem;
 }
 
 .quote-caption {
   font-size: 0.9rem;
-  color: var(--color-cream-muted);
+  color: var(--color-ink-muted);
   line-height: 1.4;
 }
 
@@ -734,17 +706,17 @@ body {
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 0.85rem;
-  color: var(--color-dark);
+  color: var(--color-ink);
 }
 
 .arch-desc {
   font-size: 0.8rem;
-  color: var(--color-cream-muted);
+  color: var(--color-ink-muted);
 }
 
 .arch-connector {
   font-size: 1.25rem;
-  color: var(--color-dark);
+  color: var(--color-ink);
   margin: 0.5rem 0;
 }
 
@@ -753,7 +725,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   text-align: center;
-  background-color: #fff;
+  background-color: var(--color-bone-alt);
   padding: 1rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-cream-border);
@@ -769,7 +741,7 @@ body {
 
 .arch-col p {
   font-size: 0.75rem;
-  color: var(--color-cream-muted);
+  color: var(--color-ink-muted);
 }
 
 .arch-conclusion {
@@ -777,7 +749,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-dark);
+  color: var(--color-ink);
   margin-top: 1rem;
   font-weight: 600;
 }
@@ -796,14 +768,14 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-cream-muted);
+  color: var(--color-ink-muted);
   margin-bottom: 0.35rem;
 }
 
 .meta-block p {
   font-size: 0.95rem;
   line-height: 1.5;
-  color: var(--color-dark);
+  color: var(--color-ink);
 }
 
 .tag-cloud {
@@ -818,7 +790,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   background-color: var(--color-cream);
-  color: var(--color-dark);
+  color: var(--color-ink);
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-cream-border);
@@ -845,14 +817,14 @@ body {
   font-size: clamp(2.8rem, 6.5vw, 5.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--color-cream);
+  color: var(--color-ink);
   line-height: 1.05;
   margin-bottom: 1.25rem;
 }
 
 .contact-lead {
   font-size: 1.25rem;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
   max-width: 650px;
   line-height: 1.5;
 }
@@ -865,24 +837,26 @@ body {
 }
 
 .contact-card {
-  background-color: var(--color-dark-alt);
-  border: 1px solid var(--color-dark-border);
+  background-color: var(--color-bone);
+  border: 1px solid var(--color-cream-border);
   border-radius: var(--radius-md);
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(22, 21, 19, 0.04);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .contact-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--color-ink);
+  box-shadow: 0 8px 24px rgba(22, 21, 19, 0.08);
 }
 
 .contact-label {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
-  color: var(--color-accent);
+  color: var(--color-ink-muted);
   margin-bottom: 1rem;
 }
 
@@ -890,7 +864,7 @@ body {
   font-family: var(--font-display);
   font-size: 1.45rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: var(--color-ink);
   text-decoration: none;
   margin-bottom: 1.5rem;
   word-break: break-all;
@@ -898,7 +872,7 @@ body {
 }
 
 .contact-value:hover {
-  color: var(--color-accent);
+  color: #55514b;
 }
 
 .contact-action-row {
@@ -910,12 +884,12 @@ body {
 
 .contact-subtext {
   font-size: 0.95rem;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
   line-height: 1.5;
 }
 
 .contact-footer-note {
-  border-top: 1px solid var(--color-dark-border);
+  border-top: 1px solid var(--color-cream-border);
   padding-top: 2rem;
 }
 
@@ -925,20 +899,20 @@ body {
   gap: 0.75rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
   letter-spacing: 0.05em;
 }
 
 .role-summary-list .sep {
-  color: var(--color-accent);
+  color: var(--color-ink);
 }
 
 /* ==========================================================================
    FOOTER
    ========================================================================== */
 .site-footer {
-  background-color: #0b0c0d;
-  border-top: 1px solid var(--color-dark-border);
+  background-color: var(--color-cream-alt);
+  border-top: 1px solid var(--color-cream-border);
   padding: 2rem 0;
 }
 
@@ -954,91 +928,26 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.06em;
-  color: var(--color-dark-muted);
+  color: var(--color-ink-muted);
 }
 
 .footer-note {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: #646059;
+  color: var(--color-ink-muted);
 }
 
 .back-to-top {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
-  color: var(--color-accent);
+  color: var(--color-ink);
   text-decoration: none;
   transition: opacity var(--transition-fast);
 }
 
 .back-to-top:hover {
   opacity: 0.7;
-}
-
-/* ==========================================================================
-   TWO-COLOR INVERT MODE (Theme Toggle Support)
-   When data-theme="inverted", the dual colors switch roles
-   ========================================================================== */
-body[data-theme="inverted"] {
-  --color-dark: #f4f0e8;
-  --color-dark-alt: #eae4d7;
-  --color-dark-border: rgba(17, 18, 19, 0.15);
-  --color-dark-muted: #6e6a64;
-  
-  --color-cream: #111213;
-  --color-cream-alt: #1a1b1d;
-  --color-cream-border: rgba(244, 240, 232, 0.15);
-  --color-cream-muted: #95928d;
-
-  --color-accent: #111213;
-  --color-accent-text: #f4f0e8;
-
-  background-color: var(--color-dark);
-  color: var(--color-cream);
-}
-
-body[data-theme="inverted"] .site-header {
-  background-color: rgba(244, 240, 232, 0.94);
-  border-color: var(--color-dark-border);
-}
-
-body[data-theme="inverted"] .case-card {
-  background-color: #1a1b1d;
-  color: #f4f0e8;
-}
-
-body[data-theme="inverted"] .case-title {
-  color: #f4f0e8;
-}
-
-body[data-theme="inverted"] .case-index {
-  color: #f4f0e8;
-}
-
-body[data-theme="inverted"] .case-tagline {
-  color: #cfcac0;
-}
-
-body[data-theme="inverted"] .case-summary {
-  color: #b5b1aa;
-}
-
-body[data-theme="inverted"] .meta-block p {
-  color: #f4f0e8;
-}
-
-body[data-theme="inverted"] .tag {
-  background-color: #111213;
-  color: #f4f0e8;
-}
-
-body[data-theme="inverted"] .quote-text {
-  color: #111213;
-}
-
-body[data-theme="inverted"] .site-footer {
-  background-color: #ece6dc;
 }
 
 /* ==========================================================================
