@@ -30,8 +30,8 @@
   --font-mono: 'JetBrains Mono', 'Ubuntu Sans Mono', monospace;
 
   /* Layout & Spacing */
-  --max-width: 1200px;
-  --header-height: 72px;
+  --max-width: 1680px;
+  --header-height: 76px;
   --radius-sm: 4px;
   --radius-md: 8px;
   --transition-fast: 0.2s ease;
@@ -47,7 +47,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: clamp(16px, 1.05vw + 2px, 20px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -65,7 +65,7 @@ body {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(1.5rem, 3.5vw, 4.5rem);
 }
 
 /* ==========================================================================
@@ -288,7 +288,7 @@ body {
    HERO SECTION
    ========================================================================== */
 .section-hero {
-  padding: 4rem 0 5rem 0;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(3rem, 6vw, 5.5rem) 0;
   min-height: auto;
   display: flex;
   align-items: center;
@@ -297,24 +297,25 @@ body {
 .hero-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .hero-image-wrapper {
   width: 100%;
-  max-width: 1080px;
-  margin: 0 0 2.5rem 0;
+  max-width: 100%;
+  margin: 0 0 2rem 0;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--color-cream-border);
   background-color: var(--color-bone-alt);
-  box-shadow: 0 12px 32px rgba(22, 21, 19, 0.08);
+  box-shadow: 0 16px 40px rgba(21, 21, 21, 0.08);
 }
 
 .hero-image {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .hero-title {
@@ -356,7 +357,6 @@ body {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  max-width: 1080px;
   gap: 1rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-cream-border);
