@@ -29,6 +29,18 @@
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
+
+      <!-- MangoRadio Live Stream Player -->
+      <div class="radio-player-widget">
+        <button id="radioPlayBtn" class="radio-btn" aria-label="Toggle MangoRadio Stream">
+          <span class="radio-status-dot"></span>
+          <span class="radio-label">MANGO</span>
+          <span class="radio-icon" id="radioPlayIcon">▶</span>
+        </button>
+        <audio id="radioAudio" preload="none">
+          <source src="https://stream.laut.fm/mangoradio" type="audio/mpeg">
+        </audio>
+      </div>
     </div>
   </header>
 

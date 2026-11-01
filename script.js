@@ -6,7 +6,76 @@
 document.addEventListener('DOMContentLoaded', () => {
   initCopyEmail();
   initScrollSpy();
+  initRadioPlayer();
 });
+
+/**
+ * Real-time Live Radio Player (MangoRadio2)
+ */
+function initRadioPlayer() {
+  const audio = document.getElementById('radioAudio');
+  const playBtn = document.getElementById('radioPlayBtn');
+  const playIcon = document.getElementById('radioPlayIcon');
+
+  if (!audio || !playBtn || !playIcon) return;
+
+  const STREAM_URL = 'https://stream.laut.fm/mangoradio';
+
+  function playStream() {
+    // Refresh src to attach to the live broadcast head
+    if (!audio.src || audio.src === '') {
+      audio.src = STREAM_URL;
+    }
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          playBtn.classList.add('playing');
+          playIcon.textContent = '❚❚';
+        })
+        .catch(() => {
+          // Autoplay blocked by browser policy until user gesture
+          playBtn.classList.remove('playing');
+          playIcon.textContent = '▶';
+        });
+    }
+  }
+
+  function pauseStream() {
+    audio.pause();
+    // Reset src to drop buffer and stop background bandwidth consumption
+    audio.src = '';
+    playBtn.classList.remove('playing');
+    playIcon.textContent = '▶';
+  }
+
+  // Toggle button click
+  playBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (audio.paused || audio.src === '') {
+      playStream();
+    } else {
+      pauseStream();
+    }
+  });
+
+  // Attempt autoplay on page load
+  playStream();
+
+  // If autoplay is blocked by browser autoplay policy, resume on first user interaction
+  const unlockAutoplay = () => {
+    if (audio.paused || audio.src === '') {
+      playStream();
+    }
+    window.removeEventListener('click', unlockAutoplay);
+    window.removeEventListener('keydown', unlockAutoplay);
+    window.removeEventListener('touchstart', unlockAutoplay);
+  };
+
+  window.addEventListener('click', unlockAutoplay, { once: true });
+  window.addEventListener('keydown', unlockAutoplay, { once: true });
+  window.addEventListener('touchstart', unlockAutoplay, { once: true });
+}
 
 /**
  * Copy email to clipboard with UI feedback

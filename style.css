@@ -118,6 +118,59 @@ body {
   margin-left: auto;
 }
 
+/* Radio Player Widget */
+.radio-player-widget {
+  display: flex;
+  align-items: center;
+}
+
+.radio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.radio-btn:hover {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  border-color: var(--color-ink);
+}
+
+.radio-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #999999;
+  transition: background-color var(--transition-fast);
+}
+
+.radio-btn.playing .radio-status-dot {
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: radioPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes radioPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.7; }
+}
+
+.radio-icon {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
