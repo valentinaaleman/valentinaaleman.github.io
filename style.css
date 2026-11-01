@@ -114,10 +114,15 @@ body {
   color: var(--color-ink-muted);
 }
 
+.site-nav {
+  margin-left: auto;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
   gap: 2rem;
+  justify-content: flex-end;
 }
 
 .nav-link {
