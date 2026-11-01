@@ -352,6 +352,24 @@ body {
   text-transform: uppercase;
 }
 
+.hero-image-wrapper {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 0 2.5rem 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-dark-border);
+  background-color: var(--color-dark-alt);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5.8vw, 4.8rem);
