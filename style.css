@@ -92,6 +92,12 @@ body {
   width: 100%;
 }
 
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .brand-logo {
   text-decoration: none;
   display: flex;
