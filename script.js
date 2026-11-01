@@ -22,9 +22,9 @@ function initRadioPlayer() {
   const STREAM_URL = 'https://stream.laut.fm/mangoradio';
 
   function playStream() {
-    // Refresh src to attach to the live broadcast head
-    if (!audio.src || audio.src === '') {
+    if (!audio.src || audio.src === '' || audio.src === window.location.href) {
       audio.src = STREAM_URL;
+      audio.load();
     }
     const playPromise = audio.play();
     if (playPromise !== undefined) {
@@ -33,8 +33,9 @@ function initRadioPlayer() {
           playBtn.classList.add('playing');
           playIcon.textContent = '❚❚';
         })
-        .catch(() => {
+        .catch((err) => {
           // Autoplay blocked by browser policy until user gesture
+          console.warn('Autoplay blocked, awaiting user click:', err);
           playBtn.classList.remove('playing');
           playIcon.textContent = '▶';
         });
@@ -43,7 +44,6 @@ function initRadioPlayer() {
 
   function pauseStream() {
     audio.pause();
-    // Reset src to drop buffer and stop background bandwidth consumption
     audio.src = '';
     playBtn.classList.remove('playing');
     playIcon.textContent = '▶';
@@ -52,29 +52,25 @@ function initRadioPlayer() {
   // Toggle button click
   playBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (audio.paused || audio.src === '') {
+    if (audio.paused || !audio.src || audio.src === '' || audio.src === window.location.href) {
       playStream();
     } else {
       pauseStream();
     }
   });
 
-  // Attempt autoplay on page load
+  // Attempt initial autoplay
   playStream();
 
-  // If autoplay is blocked by browser autoplay policy, resume on first user interaction
+  // If autoplay is blocked by browser policy, start on very first user interaction anywhere
   const unlockAutoplay = () => {
-    if (audio.paused || audio.src === '') {
+    if (audio.paused || !audio.src || audio.src === '' || audio.src === window.location.href) {
       playStream();
     }
-    window.removeEventListener('click', unlockAutoplay);
-    window.removeEventListener('keydown', unlockAutoplay);
-    window.removeEventListener('touchstart', unlockAutoplay);
   };
 
-  window.addEventListener('click', unlockAutoplay, { once: true });
-  window.addEventListener('keydown', unlockAutoplay, { once: true });
-  window.addEventListener('touchstart', unlockAutoplay, { once: true });
+  document.addEventListener('pointerdown', unlockAutoplay, { once: true });
+  document.addEventListener('keydown', unlockAutoplay, { once: true });
 }
 
 /**
