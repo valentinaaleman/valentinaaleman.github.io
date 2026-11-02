@@ -92,6 +92,28 @@ body {
   width: 100%;
 }
 
+.brand-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logo-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  color: var(--color-ink);
+}
+
+.logo-role {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-muted);
+}
+
 .site-nav {
   margin-left: auto;
 }
