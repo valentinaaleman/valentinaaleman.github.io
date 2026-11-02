@@ -19,8 +19,8 @@ function initRadioPlayer() {
 
   if (!audio || !playBtn || !playIcon) return;
 
-  // Set default volume to 50%
-  audio.volume = 0.5;
+  // Set default volume (reduced 30% more from 0.5 to 0.2)
+  audio.volume = 0.2;
 
   const STREAM_URL = 'https://stream.laut.fm/mangoradio';
 
