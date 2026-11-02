@@ -442,15 +442,21 @@ body {
 /* ==========================================================================
    ABOUT SECTION (Color B - Cream)
    ========================================================================== */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+.about-focused {
+  max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.about-lead .section-title {
-  margin-bottom: 2rem;
+.about-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-bottom: 0.5rem;
 }
 
 .text-muted {
@@ -458,58 +464,21 @@ body {
   font-weight: 400;
 }
 
-.lead-text {
-  font-size: 1.35rem;
-  line-height: 1.5;
-  color: var(--color-ink);
-  font-weight: 400;
-}
-
-.about-body p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--color-ink-light);
-  margin-bottom: 2.5rem;
-}
-
-.principles-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-  border-top: 1px solid var(--color-cream-border);
-  padding-top: 2rem;
-}
-
-.principle-item {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-
-.principle-num {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-ink);
-  background-color: var(--color-cream-alt);
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-cream-border);
-}
-
-.principle-item h4 {
+.about-statement {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.35rem;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 600;
+  line-height: 1.35;
   color: var(--color-ink);
+  letter-spacing: -0.01em;
 }
 
-.principle-item p {
-  font-size: 0.95rem;
-  color: var(--color-ink-muted);
-  margin-bottom: 0;
-  line-height: 1.5;
+.about-description {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  line-height: 1.65;
+  color: var(--color-ink-light);
+  max-width: 920px;
 }
 
 /* ==========================================================================
@@ -519,6 +488,11 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
+}
+
+.services-grid-concise .service-card {
+  padding: 2.25rem 2rem;
+  justify-content: flex-start;
 }
 
 .service-card {
@@ -556,272 +530,117 @@ body {
 
 .card-summary {
   font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   SELECTED WORK (Color B: Bone White)
+   ========================================================================== */
+.work-intro {
+  margin-bottom: 3.5rem;
+}
+
+.work-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-bottom: 1rem;
+}
+
+.work-sublead {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 1.35vw, 1.3rem);
+  color: var(--color-ink-light);
+  max-width: 760px;
+}
+
+/* 5-Project Visual Gateway Grid */
+.work-gateway-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.25rem;
+}
+
+.gateway-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bone-alt);
+  border: 1px solid var(--color-cream-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 16px rgba(22, 21, 19, 0.04);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.gateway-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-ink);
+  box-shadow: 0 12px 28px rgba(22, 21, 19, 0.1);
+}
+
+.gateway-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--color-bone);
+}
+
+.gateway-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.gateway-card:hover .gateway-img {
+  transform: scale(1.03);
+}
+
+.gateway-info {
+  padding: 1.75rem 1.75rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.gateway-num {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+
+.gateway-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  line-height: 1.25;
+}
+
+.gateway-discipline {
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   color: var(--color-ink-muted);
   text-transform: uppercase;
-  margin-bottom: 1.25rem;
 }
 
-.card-description {
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: var(--color-ink-light);
-  margin-bottom: 1.75rem;
-  flex-grow: 1;
-}
-
-.card-bullets {
-  list-style: none;
-  border-top: 1px solid var(--color-cream-border);
-  padding-top: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.card-bullets li {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: var(--color-ink-muted);
-  position: relative;
-  padding-left: 1rem;
-}
-
-.card-bullets li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--color-ink);
-}
-
-/* ==========================================================================
-   WORK / CASE STUDIES (Color B: Bone White)
-   ========================================================================== */
-.work-filter-note {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  color: var(--color-cream-muted);
-  border: 1px solid var(--color-cream-border);
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-sm);
-}
-
-.case-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.case-card {
-  background-color: var(--color-bone-alt);
-  border: 1px solid var(--color-cream-border);
-  border-radius: var(--radius-md);
-  padding: 3rem;
-  box-shadow: 0 4px 20px rgba(22, 21, 19, 0.04);
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
-}
-
-.case-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(22, 21, 19, 0.08);
-}
-
-.case-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--color-cream-border);
-  padding-bottom: 1.25rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.case-index {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--color-ink);
-}
-
-.case-discipline {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--color-ink-muted);
-  text-transform: uppercase;
-}
-
-.case-body-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 3.5rem;
-}
-
-.case-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 700;
-  color: var(--color-ink);
-  margin-bottom: 0.4rem;
-  letter-spacing: -0.01em;
-}
-
-.case-tagline {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-style: italic;
-  font-weight: 500;
-  color: var(--color-ink-light);
-  margin-bottom: 1.5rem;
-}
-
-.case-summary {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--color-ink-light);
-  margin-bottom: 2rem;
-}
-
-.case-quote {
-  background-color: var(--color-cream);
-  border-left: 3px solid var(--color-ink);
-  padding: 1.5rem;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-}
-
-.quote-marker {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  color: var(--color-ink-muted);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.quote-text {
-  font-family: var(--font-display);
-  font-size: 1.18rem;
-  font-weight: 600;
-  color: var(--color-ink);
-  margin-bottom: 0.35rem;
-}
-
-.quote-caption {
-  font-size: 0.9rem;
-  color: var(--color-ink-muted);
-  line-height: 1.4;
-}
-
-/* Architecture Diagram */
-.architecture-diagram {
-  background-color: var(--color-cream);
-  padding: 1.5rem;
-  border-radius: var(--radius-sm);
-  text-align: center;
-}
-
-.arch-level {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.arch-badge {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--color-ink);
-}
-
-.arch-desc {
-  font-size: 0.8rem;
-  color: var(--color-ink-muted);
-}
-
-.arch-connector {
-  font-size: 1.25rem;
-  color: var(--color-ink);
-  margin: 0.5rem 0;
-}
-
-.arch-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  text-align: center;
-  background-color: var(--color-bone-alt);
-  padding: 1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-cream-border);
-}
-
-.arch-sub {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.8rem;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.arch-col p {
-  font-size: 0.75rem;
-  color: var(--color-ink-muted);
-}
-
-.arch-conclusion {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink);
-  margin-top: 1rem;
-  font-weight: 600;
-}
-
-/* Case Meta Column */
-.case-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  border-left: 1px solid var(--color-cream-border);
-  padding-left: 2rem;
-}
-
-.meta-block h5 {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
-  margin-bottom: 0.35rem;
-}
-
-.meta-block p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--color-ink);
-}
-
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: auto;
-  padding-top: 1rem;
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  background-color: var(--color-cream);
-  color: var(--color-ink);
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-cream-border);
+.project-anchor-target {
+  scroll-margin-top: 100px;
 }
 
 /* ==========================================================================
