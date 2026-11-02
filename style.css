@@ -92,11 +92,16 @@ body {
   width: 100%;
 }
 
-.brand-logo {
+.brand-logo,
+.brand-logo:link,
+.brand-logo:visited,
+.brand-logo:hover,
+.brand-logo:active {
   text-decoration: none;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  color: inherit;
 }
 
 .logo-name {
@@ -105,6 +110,7 @@ body {
   font-size: 1.15rem;
   letter-spacing: 0.08em;
   color: var(--color-ink);
+  line-height: 1.2;
 }
 
 .logo-role {
@@ -112,6 +118,7 @@ body {
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   color: var(--color-ink-muted);
+  line-height: 1.2;
 }
 
 .site-nav {
