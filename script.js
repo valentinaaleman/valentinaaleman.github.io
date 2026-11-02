@@ -22,7 +22,10 @@ function initRadioPlayer() {
   // Set default volume (reduced 30% more from 0.5 to 0.2)
   audio.volume = 0.2;
 
-  const STREAM_URL = 'https://stream.laut.fm/mangoradio';
+  // Synphaera Radio (Space Music) from SomaFM
+  const STREAM_URL = 'https://ice6.somafm.com/synphaera-128-mp3';
+  // MANGO radio stream (saved for later):
+  // const STREAM_URL = 'https://stream.laut.fm/mangoradio';
 
   function playStream() {
     if (!audio.src || audio.src === '' || audio.src === window.location.href) {

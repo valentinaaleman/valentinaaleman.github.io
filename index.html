@@ -27,7 +27,16 @@
       <nav class="site-nav" aria-label="Main Navigation">
         <ul class="nav-links">
           <li class="nav-radio-item">
-            <!-- MangoRadio Live Stream Player -->
+            <!-- Synphaera Radio (Space Music) Live Stream Player -->
+            <div class="radio-player-widget">
+              <button id="radioPlayBtn" class="radio-btn" aria-label="Toggle Space Music Stream">
+                <span class="radio-status-dot"></span>
+                <span class="radio-label">Space</span>
+                <span class="radio-icon" id="radioPlayIcon">▶</span>
+              </button>
+              <audio id="radioAudio" preload="none" src="https://ice6.somafm.com/synphaera-128-mp3"></audio>
+            </div>
+            <!-- MANGO Radio (saved for later):
             <div class="radio-player-widget">
               <button id="radioPlayBtn" class="radio-btn" aria-label="Toggle MangoRadio Stream">
                 <span class="radio-status-dot"></span>
@@ -36,6 +45,7 @@
               </button>
               <audio id="radioAudio" preload="none" src="https://stream.laut.fm/mangoradio"></audio>
             </div>
+            -->
           </li>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#services" class="nav-link">Brand</a></li>
