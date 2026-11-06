@@ -24,31 +24,22 @@
 
       <nav class="site-nav" aria-label="Main Navigation">
         <ul class="nav-links">
+          <li><a href="#hero" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">What I Bring</a></li>
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
           <li class="nav-radio-item">
-            <!-- Synphaera Radio (Space Music) Live Stream Player -->
+            <!-- Synphaera Radio Live Stream Player -->
             <div class="radio-player-widget">
-              <button id="radioPlayBtn" class="radio-btn" aria-label="Toggle Space Music Stream">
+              <button id="radioPlayBtn" class="radio-btn" aria-label="Toggle Radio Stream">
                 <span class="radio-status-dot"></span>
-                <span class="radio-label">Space</span>
+                <span class="radio-label">Radio</span>
                 <span class="radio-icon" id="radioPlayIcon">▶</span>
               </button>
               <audio id="radioAudio" preload="none" src="https://ice6.somafm.com/synphaera-128-mp3"></audio>
             </div>
-            <!-- MANGO Radio (saved for later):
-            <div class="radio-player-widget">
-              <button id="radioPlayBtn" class="radio-btn" aria-label="Toggle MangoRadio Stream">
-                <span class="radio-status-dot"></span>
-                <span class="radio-label">MANGO</span>
-                <span class="radio-icon" id="radioPlayIcon">▶</span>
-              </button>
-              <audio id="radioAudio" preload="none" src="https://stream.laut.fm/mangoradio"></audio>
-            </div>
-            -->
           </li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#services" class="nav-link">Brand</a></li>
-          <li><a href="#work" class="nav-link">Work</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -79,7 +70,7 @@
     <!-- ABOUT SECTION (Color B) -->
     <section id="about" class="section section-about section-light">
       <div class="container">
-        <div class="section-tag">[ 01 / ABOUT ]</div>
+        <div class="section-tag">[ ABOUT ]</div>
         
         <div class="about-focused">
           <h2 class="about-headline">
@@ -100,9 +91,12 @@
     <!-- WHAT I BRING / SERVICES (Color A) -->
     <section id="services" class="section section-services section-dark">
       <div class="container">
-        <div class="section-tag">[ 02 / WHAT I BRING ]</div>
+        <div class="section-tag">[ WHAT I BRING ]</div>
         <div class="section-header-row">
-          <h2 class="section-title">WHAT I BRING</h2>
+          <div class="section-title-wrap">
+            <h2 class="section-title">WHAT I BRING</h2>
+            <p class="section-subtitle">SERVICES</p>
+          </div>
         </div>
 
         <div class="services-grid services-grid-concise">
@@ -140,7 +134,7 @@
     <!-- SELECTED WORK (Color B) -->
     <section id="work" class="section section-work section-light">
       <div class="container">
-        <div class="section-tag">[ 03 / WORK ]</div>
+        <div class="section-tag">[ SELECTED WORK ]</div>
         
         <div class="work-intro">
           <h2 class="section-title">SELECTED WORK</h2>
@@ -157,7 +151,7 @@
         <div class="work-gateway-grid">
           
           <!-- 01: HARINANA -->
-          <a href="#case-harinana" class="gateway-card">
+          <a href="#case-harinana" class="gateway-card" data-case="case-harinana">
             <div class="gateway-media">
               <img src="assets/media/harinana-800x600.png" alt="01 HARINANA" loading="lazy" class="gateway-img">
             </div>
@@ -169,7 +163,7 @@
           </a>
 
           <!-- 02: ARAWAK -->
-          <article class="gateway-card">
+          <a href="#case-arawak" class="gateway-card" data-case="case-arawak">
             <div class="gateway-media">
               <img src="assets/media/arawak_4x3.png" alt="02 ARAWAK" loading="lazy" class="gateway-img">
             </div>
@@ -178,7 +172,7 @@
               <h3 class="gateway-title">ARAWAK</h3>
               <p class="gateway-discipline">Brand Architecture · Business Strategy</p>
             </div>
-          </article>
+          </a>
 
           <!-- 03: BODYBOX / OUT OF THE BOX / BB GAMES -->
           <article class="gateway-card">
@@ -218,13 +212,20 @@
 
         </div>
 
-        <!-- Project Detail Section: 01 HARINANA -->
-        <div class="project-detail-list">
+        <!-- Project Detail Section: Dynamic Case Studies Viewer -->
+        <div id="case-studies-viewer" class="project-detail-list">
           
-          <article id="case-harinana" class="project-case-study project-anchor-target">
+          <div class="case-viewer-bar">
+            <a href="#work" class="btn btn-sm btn-outline back-to-gateway-btn">← Back to Selected Work</a>
+            <span id="caseViewerStatus" class="case-viewer-status">CASE STUDY</span>
+            <a href="#work" class="case-close-icon-btn" aria-label="Close Case Study">✕</a>
+          </div>
+
+          <!-- CASE STUDY 01: HARINANA -->
+          <article id="case-harinana" class="project-case-study project-anchor-target" data-case-title="CASE STUDY 01: HARINANA">
             <header class="case-study-header">
               <div class="case-study-top-meta">
-                <span class="case-story-badge">CASE STORY 01</span>
+                <span class="case-study-badge">CASE STUDY 01</span>
                 <span class="case-study-disciplines">BRAND STRATEGY · PACKAGING · CREATIVE DIRECTION</span>
               </div>
               <div class="case-study-title-wrap">
@@ -279,23 +280,168 @@
 
             <!-- 03: Claim to Behavior & Ingredient Focus -->
             <div class="case-study-behavior-block">
-              <div class="behavior-content">
-                <span class="behavior-label">FROM CLAIM TO BEHAVIOR</span>
-                <blockquote class="behavior-quote">“Hechas con ingredientes que sabes pronunciar.”</blockquote>
-                <p class="behavior-desc">
-                  The message does not stop at the front of pack. It redirects attention to the ingredient list — turning transparency into an interaction.
+              <span class="behavior-label">FROM CLAIM TO BEHAVIOR</span>
+              <blockquote class="behavior-quote">“Hechas con ingredientes que sabes pronunciar.”</blockquote>
+              <p class="behavior-desc">
+                The message does not stop at the front of pack. It redirects attention to the ingredient list — turning transparency into an interaction.
+              </p>
+            </div>
+
+            <!-- Image 3 outside behavior block to eliminate black left border -->
+            <figure class="case-study-media">
+              <img src="assets/media/harinana/03_HARINANA_ingredientes_que_sabes_pronunciar.png" alt="03 HARINANA - Radical Transparency: Ingredientes que sabes pronunciar" loading="lazy">
+              <figcaption class="media-caption">03 / INGREDIENT LIST ARCHITECTURE · TURNING TRANSPARENCY INTO INTERACTION</figcaption>
+            </figure>
+
+            <footer class="case-study-footer-nav">
+              <div class="footer-nav-left">
+                <a href="#work" class="back-to-gateway">↑ Back to Selected Work</a>
+              </div>
+              <div class="footer-nav-center">
+                <span class="case-study-badge">01 / 05</span>
+              </div>
+              <div class="footer-nav-right">
+                <a href="#case-arawak" class="nav-next-case gateway-card-trigger" data-case="case-arawak">Next Case: 02 ARAWAK →</a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- CASE STUDY 02: ARAWAK -->
+          <article id="case-arawak" class="project-case-study project-anchor-target" data-case-title="CASE STUDY 02: ARAWAK">
+            <header class="case-study-header">
+              <div class="case-study-top-meta">
+                <span class="case-study-badge">CASE STUDY 02</span>
+                <span class="case-study-disciplines">BRAND ARCHITECTURE · BUSINESS STRATEGY</span>
+              </div>
+              <div class="case-study-title-wrap">
+                <h3 class="case-study-title">ARAWAK</h3>
+                <h4 class="case-study-headline">From brands to a system.</h4>
+                <p class="case-study-sublead">
+                  Turn Arawak from a legal / corporate entity into a strategic brand umbrella capable of organizing and connecting the portfolio.
                 </p>
               </div>
+            </header>
 
-              <figure class="case-study-media">
-                <img src="assets/media/harinana/03_HARINANA_ingredientes_que_sabes_pronunciar.png" alt="03 HARINANA - Radical Transparency: Ingredientes que sabes pronunciar" loading="lazy">
-                <figcaption class="media-caption">03 / INGREDIENT LIST ARCHITECTURE · TURNING TRANSPARENCY INTO INTERACTION</figcaption>
-              </figure>
+            <!-- 01 Narrative Pillars: The Problem, The Move, The Outcome -->
+            <div class="case-study-strategy">
+              <h5 class="case-section-subtitle">THE STRATEGIC REALIGNMENT</h5>
+              <div class="strategy-pillars-grid">
+                
+                <div class="strategy-pillar-card">
+                  <h6 class="pillar-title">01 — THE PROBLEM</h6>
+                  <p class="pillar-desc">
+                    Multiple consumer-facing brands with different audiences and no clear hierarchy. Arawak existed as the legal parent company, but had no visible or strategic role across the portfolio.
+                  </p>
+                </div>
+
+                <div class="strategy-pillar-card">
+                  <h6 class="pillar-title">02 — THE MOVE</h6>
+                  <p class="pillar-desc">
+                    Turn Arawak from a legal / corporate entity into a strategic brand umbrella capable of organizing and connecting the portfolio.
+                  </p>
+                </div>
+
+                <div class="strategy-pillar-card">
+                  <h6 class="pillar-title">03 — THE OUTCOME</h6>
+                  <p class="pillar-desc">
+                    A clear system: Arawak as master brand, Harinana as premium brand and NANA as accessible / everyday brand — distinct roles, one governing logic.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Visual 1: 3-Brand System Composition -->
+            <figure class="case-study-media">
+              <img src="assets/media/arawak/ARAWAK_composicion_3_marcas_transparente.png" alt="ARAWAK Brand Architecture: Arawak, Harinana, and Nana Composition" loading="lazy">
+              <figcaption class="media-caption">01 / THE BRAND ARCHITECTURE SYSTEM · ONE SYSTEM. DISTINCT ROLES. SHARED EQUITY.</figcaption>
+            </figure>
+
+            <!-- Brand Architecture System Roles Box -->
+            <div class="case-architecture-block">
+              <div class="architecture-header">
+                <span class="architecture-label">THE BRAND ARCHITECTURE SYSTEM</span>
+                <h5 class="architecture-title">One system. Distinct roles. Shared equity.</h5>
+              </div>
+              
+              <div class="architecture-roles-grid">
+                <div class="role-card">
+                  <span class="role-tier">MASTER BRAND</span>
+                  <h6 class="role-name">ARAWAK</h6>
+                  <p class="role-definition">Umbrella / Strategic Anchor</p>
+                  <p class="role-traits">Coherence · origin · scalability</p>
+                </div>
+
+                <div class="role-card">
+                  <span class="role-tier">FLAGSHIP</span>
+                  <h6 class="role-name">HARINANA</h6>
+                  <p class="role-definition">Emotional Brand</p>
+                  <p class="role-traits">Love · recognition · premium perception</p>
+                </div>
+
+                <div class="role-card">
+                  <span class="role-tier">ACCESSIBLE LINE</span>
+                  <h6 class="role-name">NANA</h6>
+                  <p class="role-definition">Everyday Line</p>
+                  <p class="role-traits">Frequency · reach · flexibility</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Strategic Brand Moves (with 3 media cards) -->
+            <div class="case-study-strategy">
+              <h5 class="case-section-subtitle">STRATEGIC BRAND MOVES</h5>
+              <div class="brand-moves-grid">
+                
+                <div class="brand-move-card">
+                  <div class="move-media">
+                    <img src="assets/media/arawak/Imagen%20de%20ChatGPT%205%20nov%202026,%2010_10_40%20p.m-1.png" alt="01 Build the Master Brand - Alimentos sin gluten" loading="lazy">
+                  </div>
+                  <div class="move-content">
+                    <h6 class="pillar-title">01 — BUILD THE MASTER BRAND</h6>
+                    <p class="pillar-desc">
+                      Created Arawak’s identity and positioned “Alimentos sin gluten” as the shared portfolio anchor.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="brand-move-card">
+                  <div class="move-media">
+                    <img src="assets/media/arawak/Imagen%20de%20ChatGPT%205%20nov%202026,%2010_10_41%20p.m-2.png" alt="02 Protect Brand Equity - Registered Monkey Asset" loading="lazy">
+                  </div>
+                  <div class="move-content">
+                    <h6 class="pillar-title">02 — PROTECT BRAND EQUITY</h6>
+                    <p class="pillar-desc">
+                      Strengthened the registered monkey as a distinctive asset, shifting recognition beyond the Harinana name.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="brand-move-card">
+                  <div class="move-media">
+                    <img src="assets/media/arawak/Imagen%20de%20ChatGPT%205%20nov%202026,%2010_10_42%20p.m-3.png" alt="03 Create a Distinct Role - NANA Todos los días" loading="lazy">
+                  </div>
+                  <div class="move-content">
+                    <h6 class="pillar-title">03 — CREATE A DISTINCT ROLE</h6>
+                    <p class="pillar-desc">
+                      Positioned NANA as the accessible, everyday line — expressed through “Todos los días.”
+                    </p>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
             <footer class="case-study-footer-nav">
-              <a href="#work" class="back-to-gateway">↑ Back to Selected Work</a>
-              <span class="case-story-badge">01 / 05</span>
+              <div class="footer-nav-left">
+                <a href="#case-harinana" class="nav-prev-case gateway-card-trigger" data-case="case-harinana">← Previous: 01 HARINANA</a>
+              </div>
+              <div class="footer-nav-center">
+                <a href="#work" class="back-to-gateway">↑ Back to Selected Work</a>
+              </div>
+              <div class="footer-nav-right">
+                <span class="case-study-badge">02 / 05</span>
+              </div>
             </footer>
           </article>
 
@@ -306,7 +452,7 @@
     <!-- CONTACT SECTION (Color A) -->
     <section id="contact" class="section section-contact section-dark">
       <div class="container contact-container">
-        <div class="section-tag">[ 04 / CONTACT ]</div>
+        <div class="section-tag">[ CONTACT ]</div>
 
         <div class="contact-header">
           <h2 class="contact-huge-title">Put my brain on it.</h2>
@@ -356,9 +502,6 @@
     <div class="container footer-inner">
       <div class="footer-left">
         <span class="footer-copy">© 2026 VALENTINA ALEMÁN. ALL RIGHTS RESERVED.</span>
-      </div>
-      <div class="footer-center">
-        <span class="footer-note">Minimal Two-Tone Static Boilerplate · Ready for GitHub Pages</span>
       </div>
       <div class="footer-right">
         <a href="#hero" class="back-to-top">Back to top ↑</a>
