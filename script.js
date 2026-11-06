@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyEmail();
   initScrollSpy();
   initRadioPlayer();
+  initCaseStudiesViewer();
 });
 
 /**
@@ -141,3 +142,108 @@ function initScrollSpy() {
 
   sections.forEach((sec) => observer.observe(sec));
 }
+
+/**
+ * Dynamic Case Studies Viewer (Open, Close, Inter-case navigation)
+ */
+function initCaseStudiesViewer() {
+  const viewer = document.getElementById('case-studies-viewer');
+  if (!viewer) return;
+
+  const caseArticles = viewer.querySelectorAll('.project-case-study');
+  const statusLabel = document.getElementById('caseViewerStatus');
+  const gatewaySection = document.getElementById('work');
+
+  function openCase(caseId, smoothScroll = true) {
+    const targetArticle = document.getElementById(caseId);
+    if (!targetArticle) return;
+
+    // Deactivate all cases, activate selected
+    caseArticles.forEach((art) => art.classList.remove('is-active'));
+    targetArticle.classList.add('is-active');
+
+    // Open viewer container
+    viewer.classList.add('is-open');
+
+    // Update status label
+    const title = targetArticle.getAttribute('data-case-title') || 'CASE STUDY';
+    if (statusLabel) {
+      statusLabel.textContent = title;
+    }
+
+    // Scroll to viewer
+    if (smoothScroll) {
+      setTimeout(() => {
+        const headerOffset = 85;
+        const elementPosition = viewer.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }, 50);
+    }
+  }
+
+  function closeCase() {
+    if (gatewaySection) {
+      const headerOffset = 70;
+      const elementPosition = gatewaySection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+
+    setTimeout(() => {
+      viewer.classList.remove('is-open');
+      caseArticles.forEach((art) => art.classList.remove('is-active'));
+      if (window.location.hash.startsWith('#case-')) {
+        history.pushState(null, '', '#work');
+      }
+    }, 350);
+  }
+
+  // Intercept clicks on gateway cards and triggers with data-case
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-case]');
+    if (trigger) {
+      const caseId = trigger.getAttribute('data-case');
+      if (caseId) {
+        e.preventDefault();
+        openCase(caseId, true);
+        history.pushState(null, '', '#' + caseId);
+        return;
+      }
+    }
+
+    // Intercept clicks on back to work / close buttons
+    const closeTrigger = e.target.closest('.back-to-gateway-btn, .case-close-icon-btn, .back-to-gateway');
+    if (closeTrigger) {
+      const href = closeTrigger.getAttribute('href');
+      if (!href || href === '#work') {
+        e.preventDefault();
+        closeCase();
+      }
+    }
+  });
+
+  // Handle URL hash changes
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#case-')) {
+      openCase(hash.substring(1), true);
+    } else if (hash === '#work' || hash === '' || hash === '#hero' || hash === '#about' || hash === '#services' || hash === '#contact') {
+      viewer.classList.remove('is-open');
+      caseArticles.forEach((art) => art.classList.remove('is-active'));
+    }
+  });
+
+  // Check initial hash on page load
+  const initialHash = window.location.hash;
+  if (initialHash && initialHash.startsWith('#case-')) {
+    openCase(initialHash.substring(1), false);
+  }
+}
+
