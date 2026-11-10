@@ -736,6 +736,7 @@ body {
   box-shadow: 0 6px 24px rgba(22, 21, 19, 0.05);
   flex-direction: column;
   gap: 2.75rem;
+  overflow: hidden;
 }
 
 .project-case-study.is-active {
@@ -874,10 +875,22 @@ body {
 .case-study-media-wide {
   background-color: transparent;
   border-color: var(--color-cream-border);
+  width: calc(100% + 2 * clamp(2rem, 4vw, 4rem));
+  max-width: none;
+  margin-left: calc(-1 * clamp(2rem, 4vw, 4rem));
+  margin-right: calc(-1 * clamp(2rem, 4vw, 4rem));
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
 }
 
 .case-study-media-wide img {
-  max-height: 520px;
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  height: auto;
+  object-fit: contain;
+  padding: 0.5rem 0;
 }
 
 .media-caption {
