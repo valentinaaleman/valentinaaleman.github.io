@@ -176,6 +176,15 @@ function initCaseStudiesViewer() {
     // Open viewer container
     viewer.classList.add('is-open');
 
+    // Autoplay videos in active case that have the autoplay attribute
+    targetArticle.querySelectorAll('video[autoplay]').forEach((v) => {
+      v.muted = true;
+      const playPromise = v.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    });
+
     // Update status label
     const title = targetArticle.getAttribute('data-case-title') || 'CASE STUDY';
     if (statusLabel) {
