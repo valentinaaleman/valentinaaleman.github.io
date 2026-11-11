@@ -981,6 +981,114 @@ body {
   margin: auto auto;
 }
 
+/* 3-Column Trio Media Row for Dra. Cristina Premerl (2 portrait images + 1 portrait video) */
+.case-study-media-trio {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  width: 100%;
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .case-study-media-trio {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.case-study-media-trio .case-study-media-col {
+  margin: 0 auto;
+  max-width: 380px;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-bone);
+  border: 1px solid var(--color-cream-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 860px) {
+  .case-study-media-trio .case-study-media-col {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+.case-study-media-trio .case-study-media-col img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  display: block;
+  background-color: var(--color-bone);
+  margin: 0;
+}
+
+.case-study-media-trio .case-study-media-video-col {
+  background-color: #0b0b0b;
+}
+
+.case-study-media-trio .case-study-media-video-col video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  display: block;
+  background-color: #000;
+  margin: 0;
+}
+
+/* Proportional Trio for BodyBox Section 2 matching original slide composition */
+/* Slide column ratio: Left ~1.1fr (Coaches), Center ~1fr (9:16 Video), Right ~1.65fr (1:1 Square) */
+@media (min-width: 860px) {
+  .case-study-media-trio.case-study-media-trio-bodybox {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1.65fr);
+    align-items: stretch;
+  }
+}
+
+.case-study-media-trio-bodybox .case-study-media-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.case-study-media-trio-bodybox .case-study-media-bodybox-light,
+.case-study-media-trio-bodybox .case-study-media-bodybox-black {
+  background-color: var(--color-bone);
+}
+
+.case-study-media-trio-bodybox .case-study-media-bodybox-light img,
+.case-study-media-trio-bodybox .case-study-media-bodybox-black img {
+  background-color: var(--color-bone);
+  aspect-ratio: unset;
+  max-height: 520px;
+  height: 100%;
+  object-fit: contain;
+  margin: auto auto;
+}
+
+.case-study-media-trio-bodybox .case-study-media-video-col video {
+  aspect-ratio: 9 / 16;
+  max-height: 520px;
+  height: 100%;
+  object-fit: cover;
+  margin: auto auto;
+}
+
+.case-study-media-trio-bodybox .case-study-media-bodybox-square img {
+  background-color: #fff;
+  aspect-ratio: unset;
+  max-height: 520px;
+  height: 100%;
+  object-fit: contain;
+  margin: auto auto;
+}
+
 .case-section-subtitle {
   font-family: var(--font-mono);
   font-size: 0.85rem;
