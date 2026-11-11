@@ -154,9 +154,20 @@ function initCaseStudiesViewer() {
   const statusLabel = document.getElementById('caseViewerStatus');
   const gatewaySection = document.getElementById('work');
 
+  function pauseAllVideos() {
+    viewer.querySelectorAll('video').forEach((v) => {
+      try {
+        if (!v.paused) v.pause();
+      } catch (err) {}
+    });
+  }
+
   function openCase(caseId, smoothScroll = true) {
     const targetArticle = document.getElementById(caseId);
     if (!targetArticle) return;
+
+    // Pause any playing videos before switching cases
+    pauseAllVideos();
 
     // Deactivate all cases, activate selected
     caseArticles.forEach((art) => art.classList.remove('is-active'));
@@ -186,6 +197,8 @@ function initCaseStudiesViewer() {
   }
 
   function closeCase() {
+    pauseAllVideos();
+
     if (gatewaySection) {
       const headerOffset = 70;
       const elementPosition = gatewaySection.getBoundingClientRect().top;
