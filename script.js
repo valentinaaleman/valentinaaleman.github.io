@@ -164,14 +164,26 @@ function initCaseStudiesViewer() {
     });
   }
 
-  // Ensure only one video plays at a time within the viewer
-  viewer.addEventListener('play', (e) => {
-    if (e.target && e.target.tagName === 'VIDEO') {
+  // Ensure only one unmuted video plays at a time within the viewer to avoid overlapping audio
+  function pauseOtherAudibleVideos(activeVideo) {
+    if (activeVideo && !activeVideo.muted) {
       viewer.querySelectorAll('video').forEach((v) => {
-        if (v !== e.target && !v.paused) {
+        if (v !== activeVideo && !v.paused && !v.muted) {
           v.pause();
         }
       });
+    }
+  }
+
+  viewer.addEventListener('play', (e) => {
+    if (e.target && e.target.tagName === 'VIDEO') {
+      pauseOtherAudibleVideos(e.target);
+    }
+  }, true);
+
+  viewer.addEventListener('volumechange', (e) => {
+    if (e.target && e.target.tagName === 'VIDEO' && !e.target.paused) {
+      pauseOtherAudibleVideos(e.target);
     }
   }, true);
 
