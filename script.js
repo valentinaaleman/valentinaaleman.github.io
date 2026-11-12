@@ -162,6 +162,17 @@ function initCaseStudiesViewer() {
     });
   }
 
+  // Ensure only one video plays at a time within the viewer
+  viewer.addEventListener('play', (e) => {
+    if (e.target && e.target.tagName === 'VIDEO') {
+      viewer.querySelectorAll('video').forEach((v) => {
+        if (v !== e.target && !v.paused) {
+          v.pause();
+        }
+      });
+    }
+  }, true);
+
   function openCase(caseId, smoothScroll = true) {
     const targetArticle = document.getElementById(caseId);
     if (!targetArticle) return;

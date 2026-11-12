@@ -888,6 +888,18 @@ body {
   display: block;
 }
 
+.case-study-media-full video,
+.case-study-media-wide video {
+  width: 100%;
+  max-width: 100%;
+  max-height: 640px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  background-color: #000;
+  margin: 0 auto;
+}
+
 .media-caption {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1125,6 +1137,72 @@ body {
 .case-study-media-trio-bodybox-wide-left .case-study-media-bodybox-poster img {
   object-fit: contain;
   background-color: #f2f2eb;
+}
+
+/* 4-Video Quad for Harina P.A.N. Bloque 1 */
+/* Reference slide proportions: Col 1 ~2.22fr (16:9), Cols 2, 3, 4 ~1fr each (4:5) */
+.case-study-media-pan-quad {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .case-study-media-pan-quad {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .case-study-media-pan-quad {
+    grid-template-columns: minmax(0, 2.22fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+}
+
+.case-study-media-pan-quad .case-study-media-col {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bone);
+  border: 1px solid var(--color-cream-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.case-study-media-pan-quad .pan-media-col-landscape video {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background-color: #000;
+  margin: 0;
+}
+
+.case-study-media-pan-quad .pan-media-col-portrait video {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  background-color: #000;
+  margin: 0;
+}
+
+.case-study-media-pan-quad .media-caption {
+  padding: 0.65rem 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .case-section-subtitle {
