@@ -22,7 +22,6 @@ function initRadioPlayer() {
 
   // Set default volume (reduced 30% more from 0.5 to 0.2)
   audio.volume = 0.2;
-  audio.crossOrigin = 'anonymous';
 
   // Synphaera Radio (Space Music) from SomaFM
   const STREAM_URL = 'https://ice6.somafm.com/synphaera-128-mp3';
@@ -30,7 +29,7 @@ function initRadioPlayer() {
   // const STREAM_URL = 'https://stream.laut.fm/mangoradio';
 
   function playStream() {
-    if (!audio.src || audio.src === '' || audio.src === window.location.href || !audio.src.startsWith('http')) {
+    if (!audio.src || audio.src === '' || audio.src === window.location.href) {
       audio.src = STREAM_URL;
       audio.load();
     }
@@ -52,8 +51,7 @@ function initRadioPlayer() {
 
   function pauseStream() {
     audio.pause();
-    audio.removeAttribute('src');
-    audio.load();
+    audio.src = '';
     playBtn.classList.remove('playing');
     playIcon.textContent = '▶';
   }
@@ -61,7 +59,7 @@ function initRadioPlayer() {
   // Toggle button click
   playBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (audio.paused || !audio.getAttribute('src')) {
+    if (audio.paused || !audio.src || audio.src === '' || audio.src === window.location.href) {
       playStream();
     } else {
       pauseStream();
@@ -73,7 +71,7 @@ function initRadioPlayer() {
 
   // If autoplay is blocked by browser policy, start on very first user interaction anywhere
   const unlockAutoplay = () => {
-    if (audio.paused || !audio.getAttribute('src')) {
+    if (audio.paused || !audio.src || audio.src === '' || audio.src === window.location.href) {
       playStream();
     }
   };
