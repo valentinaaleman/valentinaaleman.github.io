@@ -493,58 +493,91 @@ body {
 /* ==========================================================================
    SERVICES / WHAT I BRING (Color A: Warm Cream)
    ========================================================================== */
-.services-grid {
+.what-i-bring-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
 }
 
-.services-grid-concise .service-card {
-  padding: 2.25rem 2rem;
-  justify-content: flex-start;
+@media (max-width: 992px) {
+  .what-i-bring-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
 }
 
-.service-card {
-  background-color: var(--color-bone);
-  border: 1px solid var(--color-cream-border);
-  padding: 2.5rem 2rem;
-  border-radius: var(--radius-md);
+@media (max-width: 560px) {
+  .what-i-bring-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.what-i-bring-item {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 16px rgba(22, 21, 19, 0.04);
-  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
 }
 
-.service-card:hover {
+.what-i-bring-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 910 / 780;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 14px rgba(22, 21, 19, 0.04));
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.what-i-bring-card:hover,
+.what-i-bring-card.is-hovered {
   transform: translateY(-4px);
-  border-color: var(--color-ink);
-  box-shadow: 0 10px 24px rgba(22, 21, 19, 0.08);
+  filter: drop-shadow(0 10px 24px rgba(22, 21, 19, 0.12));
 }
 
-.card-num {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--color-ink);
-  margin-bottom: 1.5rem;
+.wib-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
-.card-title {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--color-ink);
-  margin-bottom: 0.5rem;
+.wib-img-default {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.28s ease;
 }
 
-.card-summary {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  color: var(--color-ink-muted);
-  text-transform: uppercase;
-  margin-bottom: 0;
-  line-height: 1.4;
+.wib-img-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+
+.what-i-bring-card:hover .wib-img-default,
+.what-i-bring-card.is-hovered .wib-img-default {
+  opacity: 0;
+}
+
+.what-i-bring-card:hover .wib-img-hover,
+.what-i-bring-card.is-hovered .wib-img-hover {
+  opacity: 1;
+}
+
+.what-i-bring-word {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.what-i-bring-word img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ==========================================================================
@@ -1238,9 +1271,9 @@ body {
 
 .pillar-title {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--color-ink);
   line-height: 1.4;
 }

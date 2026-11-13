@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initRadioPlayer();
   initCaseStudiesViewer();
+  initWhatIBringHover();
 });
 
 /**
@@ -292,5 +293,29 @@ function initCaseStudiesViewer() {
   if (initialHash && initialHash.startsWith('#case-')) {
     openCase(initialHash.substring(1), false);
   }
+}
+
+/**
+ * What I Bring interactive cards (supports touch toggle on mobile/touch screens)
+ */
+function initWhatIBringHover() {
+  const cards = document.querySelectorAll('.what-i-bring-card');
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const isCurrentlyHovered = card.classList.contains('is-hovered');
+      cards.forEach((c) => c.classList.remove('is-hovered'));
+      if (!isCurrentlyHovered) {
+        card.classList.add('is-hovered');
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.what-i-bring-card')) {
+      cards.forEach((c) => c.classList.remove('is-hovered'));
+    }
+  });
 }
 
