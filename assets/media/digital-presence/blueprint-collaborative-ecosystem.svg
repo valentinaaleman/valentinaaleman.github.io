@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <pattern id="grid4" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#222222" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="#151515"/>
+  <rect width="1200" height="675" fill="url(#grid4)"/>
+
+  <!-- Outer Frame -->
+  <rect x="30" y="30" width="1140" height="615" fill="#181816" stroke="#2D2D2A" stroke-width="1.5" rx="8"/>
+
+  <!-- Header Bar -->
+  <rect x="30" y="30" width="1140" height="46" fill="#1F1F1C" rx="8"/>
+  <rect x="30" y="66" width="1140" height="10" fill="#1F1F1C"/>
+  <circle cx="58" cy="53" r="5" fill="#3D3D38"/>
+  <circle cx="76" cy="53" r="5" fill="#3D3D38"/>
+  <circle cx="94" cy="53" r="5" fill="#C2C416"/>
+  <text x="120" y="57" font-family="'JetBrains Mono', monospace" font-size="12" fill="#8E8E88" letter-spacing="1">DECENTRALIZED WORKFLOW // MULTIDISCIPLINARY SQUAD + GIT-POWERED CLIENT DELIVERY</text>
+  <text x="1140" y="57" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C2C416" font-weight="700" text-anchor="end">[ PLACEHOLDER: ECOSYSTEM WIREFRAME 03 ]</text>
+
+  <!-- Central Hub: Valentina Lead & Strategic Command -->
+  <g transform="translate(60, 110)">
+    <!-- Leadership Anchor Node -->
+    <rect x="390" y="0" width="300" height="110" fill="#1E1E1B" stroke="#C2C416" stroke-width="1.5" rx="6"/>
+    <rect x="390" y="0" width="300" height="28" fill="#252512" rx="6"/>
+    <text x="540" y="19" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C2C416" font-weight="700" text-anchor="middle">LEADERSHIP &amp; CREATIVE DIRECTION</text>
+    <text x="540" y="58" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#F5F5F0" font-weight="700" text-anchor="middle">Valentina Alemán</text>
+    <text x="540" y="82" font-family="'Inter', sans-serif" font-size="11" fill="#888880" text-anchor="middle">Strategy · Brand Architecture · Squad Orchestration</text>
+
+    <!-- Radiating Connecting Lines to Disciplines -->
+    <path d="M 440 110 L 200 170" stroke="#333330" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <path d="M 540 110 L 540 170" stroke="#C2C416" stroke-width="2"/>
+    <path d="M 640 110 L 880 170" stroke="#333330" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- Specialized Talent Nodes (3 Columns) -->
+    <!-- Column 1: AI & Engineering -->
+    <g transform="translate(50, 170)">
+      <rect width="280" height="150" fill="#141412" stroke="#2E2E2A" rx="6"/>
+      <rect width="280" height="28" fill="#1C1C1A" rx="6"/>
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C2C416" font-weight="700">NODE A / AI &amp; CODE ARCHITECTURE</text>
+      <text x="14" y="55" font-family="'Space Grotesk', sans-serif" font-size="15" fill="#E5E4DE" font-weight="700">Autonomous Code Agents</text>
+      <text x="14" y="78" font-family="'Inter', sans-serif" font-size="11" fill="#888880">AI pair-programming, refactoring, and headless performance tuning that multiplies development speed 10x.</text>
+      <rect x="14" y="112" width="252" height="24" fill="#20201D" rx="3"/>
+      <text x="140" y="128" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D26A" text-anchor="middle">CONTINUOUS CODE SYNTHESIS</text>
+    </g>
+
+    <!-- Column 2: Decentralized Git Ecosystem -->
+    <g transform="translate(400, 170)">
+      <rect width="280" height="150" fill="#141412" stroke="#C2C416" stroke-width="1.2" rx="6"/>
+      <rect width="280" height="28" fill="#222310" rx="6"/>
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C2C416" font-weight="700">NODE B / GITHUB &amp; CI-CD DEPLOY</text>
+      <text x="14" y="55" font-family="'Space Grotesk', sans-serif" font-size="15" fill="#E5E4DE" font-weight="700">Decentralized Repository</text>
+      <text x="14" y="78" font-family="'Inter', sans-serif" font-size="11" fill="#888880">Transparent source code, zero vendor lock-in, atomic branch staging, and global CDN delivery without server bloat.</text>
+      <rect x="14" y="112" width="252" height="24" fill="#20201D" rx="3"/>
+      <text x="140" y="128" font-family="'JetBrains Mono', monospace" font-size="9" fill="#C2C416" text-anchor="middle">OPEN, AUDITABLE &amp; RESILIENT</text>
+    </g>
+
+    <!-- Column 3: Creative & Visual Media -->
+    <g transform="translate(750, 170)">
+      <rect width="280" height="150" fill="#141412" stroke="#2E2E2A" rx="6"/>
+      <rect width="280" height="28" fill="#1C1C1A" rx="6"/>
+      <text x="14" y="19" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C2C416" font-weight="700">NODE C / MULTIDISCIPLINARY CRAFT</text>
+      <text x="14" y="55" font-family="'Space Grotesk', sans-serif" font-size="15" fill="#E5E4DE" font-weight="700">Specialist Network</text>
+      <text x="14" y="78" font-family="'Inter', sans-serif" font-size="11" fill="#888880">Top-tier copywriters, sound designers, and motion directors brought in per project without ongoing agency overhead.</text>
+      <rect x="14" y="112" width="252" height="24" fill="#20201D" rx="3"/>
+      <text x="140" y="128" font-family="'JetBrains Mono', monospace" font-size="9" fill="#E5E4DE" text-anchor="middle">LEAN, HIGH-IMPACT SQUAD</text>
+    </g>
+
+    <!-- Bottom Delivery Banner -->
+    <g transform="translate(50, 350)">
+      <rect width="980" height="110" fill="#1A1A18" stroke="#333330" rx="6"/>
+      <text x="30" y="38" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C2C416" font-weight="700">// THE CLIENT PROPOSITION</text>
+      <text x="30" y="68" font-family="'Space Grotesk', sans-serif" font-size="20" fill="#F5F5F0" font-weight="700">
+        Turn your venture or portfolio into an active, high-velocity digital presence.
+      </text>
+      <text x="30" y="92" font-family="'Inter', sans-serif" font-size="12" fill="#888880">
+        From initial strategic narrative to fully deployed, high-speed digital experiences — crafted for founders, companies, and innovators.
+      </text>
+    </g>
+  </g>
+
+  <!-- Bottom Footnote -->
+  <text x="60" y="618" font-family="'JetBrains Mono', monospace" font-size="10" fill="#666660">WIREFRAME 03 · READY TO REPLACE WITH PRODUCTION SCREEN RECORDINGS, DIAGRAMS OR CLIENT CASE DECK VISUALS</text>
+</svg>

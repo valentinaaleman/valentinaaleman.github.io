@@ -1578,7 +1578,7 @@ body {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 4rem;
 }
@@ -1620,6 +1620,23 @@ body {
 
 .contact-value:hover {
   color: var(--color-ink-muted);
+}
+
+.contact-github-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.contact-github-icon {
+  flex-shrink: 0;
+  color: var(--color-ink);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.contact-card:hover .contact-github-icon {
+  color: var(--color-ink);
+  transform: scale(1.08);
 }
 
 .contact-action-row {
