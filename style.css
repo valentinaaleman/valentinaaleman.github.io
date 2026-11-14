@@ -1587,7 +1587,7 @@ body {
   background-color: var(--color-bone);
   border: 1px solid var(--color-cream-border);
   border-radius: var(--radius-md);
-  padding: 2.5rem;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 16px rgba(22, 21, 19, 0.04);
@@ -1599,57 +1599,63 @@ body {
   box-shadow: 0 8px 24px rgba(22, 21, 19, 0.08);
 }
 
-.contact-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: var(--color-ink-muted);
-  margin-bottom: 1rem;
+.contact-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.contact-value {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 600;
-  color: var(--color-ink);
-  text-decoration: none;
-  margin-bottom: 1.5rem;
-  word-break: break-all;
-  transition: color var(--transition-fast);
-}
-
-.contact-value:hover {
-  color: var(--color-ink-muted);
-}
-
-.contact-github-value {
+.contact-service-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bone-alt);
+  border: 1px solid var(--color-cream-border);
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-}
-
-.contact-github-icon {
+  justify-content: center;
+  color: var(--color-ink);
+  text-decoration: none;
   flex-shrink: 0;
-  color: var(--color-ink);
-  transition: transform var(--transition-fast), color var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.contact-card:hover .contact-github-icon {
-  color: var(--color-ink);
-  transform: scale(1.08);
+.contact-service-icon:hover,
+.contact-card:hover .contact-service-icon {
+  border-color: var(--color-ink);
+  background-color: var(--color-ink);
+  color: var(--color-bone);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(21, 21, 21, 0.12);
+}
+
+.contact-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-muted);
+  margin-bottom: 0;
+  line-height: 1.35;
 }
 
 .contact-action-row {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.6rem;
   margin-top: auto;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.contact-action-row .btn {
+  white-space: nowrap;
 }
 
 .contact-subtext {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--color-ink-muted);
-  line-height: 1.5;
+  line-height: 1.55;
+  margin-bottom: 2rem;
 }
 
 .contact-footer-note {
