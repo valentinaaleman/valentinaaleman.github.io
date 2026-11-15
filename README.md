@@ -19,8 +19,12 @@ Portfolio of Valentina Alemán — Strategic Communication & Creative Direction.
 
 ---
 
-## 🔤 Typography & Fonts
+## 🔤 Typography & Fonts (Unified Inter System)
 
-- **[Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)** — Display headlines, case titles, and section headers.
-- **[Inter](https://fonts.google.com/specimen/Inter)** — Primary body copy, narratives, and descriptions.
-- **[JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)** — Section tags, metadata, numbered badges, and media captions.
+Following the brand hierarchy definition in `user_feedback9.scp`:
+
+1. **Inter Display Bold (700)** — Main section titles (`#hero`, `#about`, `#services`, `#work`, `#contact`, case study titles).
+2. **Inter Display SemiBold (600)** — Secondary headlines, lead statements, and highlighted quotes (e.g. *"Turning product truth into brand value"*).
+3. **Inter Regular (400)** — Body narratives, project descriptions, and explanatory text across all sections.
+4. **Inter Medium (500)** — Complementary interactive elements, navigation links, buttons, and media captions (e.g. *"PACKAGING DESING & BRAND SYSTEM"*).
+- **[JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)** — Technical labels, badges, and metadata tags.
