@@ -923,9 +923,9 @@ body {
 .case-study-media-col img {
   width: 100%;
   height: auto;
-  max-height: 480px;
+  max-height: none;
   object-fit: contain;
-  margin: auto auto;
+  display: block;
 }
 
 /* Full-width media view for Harinana 03 & Arawak 01 */
