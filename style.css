@@ -1207,7 +1207,9 @@ body {
 }
 
 .case-study-media-trio-bodybox-wide-left .case-study-media-bodybox-poster img {
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   background-color: #f2f2eb;
 }
 
