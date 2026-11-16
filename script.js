@@ -68,19 +68,6 @@ function initRadioPlayer() {
       pauseStream();
     }
   });
-
-  // Attempt initial autoplay
-  playStream();
-
-  // If autoplay is blocked by browser policy, start on very first user interaction anywhere
-  const unlockAutoplay = () => {
-    if (audio.paused || !audio.getAttribute('src')) {
-      playStream();
-    }
-  };
-
-  document.addEventListener('pointerdown', unlockAutoplay, { once: true });
-  document.addEventListener('keydown', unlockAutoplay, { once: true });
 }
 
 /**
