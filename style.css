@@ -1152,7 +1152,7 @@ body {
   aspect-ratio: unset;
   max-height: 520px;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   margin: auto auto;
 }
 
@@ -1165,11 +1165,11 @@ body {
 }
 
 .case-study-media-trio-bodybox .case-study-media-bodybox-square img {
-  background-color: #fff;
+  background-color: var(--color-bone);
   aspect-ratio: unset;
   max-height: 520px;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   margin: auto auto;
 }
 
@@ -1321,6 +1321,24 @@ body {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--color-ink-light);
+}
+
+.strategy-pillar-statement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.25rem 0.5rem;
+}
+
+.pillar-statement-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.85vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  text-transform: uppercase;
+  margin: 0;
 }
 
 /* Behavior block (Clean uniform border, no black left line!) */
