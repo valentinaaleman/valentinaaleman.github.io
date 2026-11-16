@@ -1294,6 +1294,17 @@ body {
   gap: 1.75rem;
 }
 
+.strategy-pillars-grid-2col {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+}
+
+.case-study-top-meta.case-meta-divider {
+  border-bottom: 1px solid var(--color-cream-border);
+  padding-bottom: 0.85rem;
+  width: 100%;
+}
+
 .strategy-pillar-card {
   background-color: var(--color-bone);
   border: 1px solid var(--color-cream-border);
@@ -1339,8 +1350,12 @@ body {
   line-height: 1.22;
   letter-spacing: -0.02em;
   color: var(--color-ink);
-  text-transform: uppercase;
   margin: 0;
+}
+
+.pillar-statement-large {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.15;
 }
 
 /* Behavior block (Clean uniform border, no black left line!) */
@@ -1780,7 +1795,8 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .strategy-pillars-grid {
+  .strategy-pillars-grid,
+  .strategy-pillars-grid-2col {
     grid-template-columns: 1fr;
   }
 
