@@ -114,8 +114,9 @@ body {
 }
 
 .logo-role {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.68rem;
   letter-spacing: 0.12em;
   color: var(--color-ink-muted);
   line-height: 1.2;
