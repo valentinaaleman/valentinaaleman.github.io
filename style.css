@@ -1332,6 +1332,17 @@ body {
   padding: 1.25rem 0.5rem;
 }
 
+.strategy-pillar-statement-wide {
+  grid-column: span 2;
+  padding-left: 1.5rem;
+}
+
+.case-study-top-meta.case-meta-divider {
+  border-bottom: 1px solid var(--color-cream-border);
+  padding-bottom: 0.85rem;
+  width: 100%;
+}
+
 .pillar-statement-text {
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 1.85vw, 1.65rem);
@@ -1341,6 +1352,12 @@ body {
   color: var(--color-ink);
   text-transform: uppercase;
   margin: 0;
+}
+
+.pillar-statement-editorial {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.15;
+  text-transform: none;
 }
 
 /* Behavior block (Clean uniform border, no black left line!) */
@@ -1782,6 +1799,11 @@ body {
 
   .strategy-pillars-grid {
     grid-template-columns: 1fr;
+  }
+
+  .strategy-pillar-statement-wide {
+    grid-column: auto;
+    padding-left: 0;
   }
 
   .architecture-roles-grid,
