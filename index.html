@@ -161,6 +161,287 @@
       </div>
     </section>
 
+    <!-- DIGITAL PRESENCE ENTRY BANNER (Placement: Immediately after What I Bring, before Work) -->
+    <section id="digital-presence" class="section-digital-banner" aria-label="Digital Presence Assessment">
+      <div class="container">
+        <div class="digital-banner-wrapper">
+          <div class="digital-banner-media">
+            <img src="assets/media/digital/digital2.png" alt="Digital Presence: Is your digital presence working for you?" class="digital-banner-bg-img" loading="lazy">
+          </div>
+          <div class="digital-banner-overlay">
+            <div class="digital-banner-headline-wrap">
+              <h2 class="digital-banner-headline">
+                <span class="banner-hl-line"><span class="banner-hl-regular">Is your </span><span class="banner-hl-bold">digital</span></span>
+                <span class="banner-hl-line banner-hl-bold">presence</span>
+                <span class="banner-hl-line banner-hl-regular">working for you?</span>
+              </h2>
+            </div>
+            <div class="digital-banner-action-wrap">
+              <button type="button" class="btn btn-digital-banner-cta" id="btnOpenDigitalCheck">
+                TAKE THE 2-MINUTE CHECK <span class="cta-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE DIGITAL PRESENCE MODULE (Modal Dialog) -->
+      <div id="digital-presence-modal" class="digital-presence-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dpModalTitle">
+        <div class="dp-modal-backdrop" id="dpModalBackdrop"></div>
+        <div class="dp-modal-dialog">
+          <!-- Modal Top Bar -->
+          <header class="dp-modal-header">
+            <div class="dp-modal-brand-meta">
+              <span class="dp-brand-name">VALENTINA ALEMÁN</span>
+              <span class="dp-brand-sep">/</span>
+              <span class="dp-brand-section">DIGITAL PRESENCE</span>
+            </div>
+            <div class="dp-modal-nav-actions">
+              <button type="button" class="dp-nav-link-btn" id="dpNavBtnOverview">Overview</button>
+              <button type="button" class="dp-nav-link-btn is-active" id="dpNavBtnCheck">Diagnostic Check</button>
+              <button type="button" class="dp-nav-link-btn" id="dpNavBtnLiveProject">Live Project 001</button>
+              <button type="button" class="dp-modal-close-btn" id="dpModalCloseBtn" aria-label="Close Digital Presence assessment">
+                <span class="dp-close-label">CLOSE</span> <span class="dp-close-icon" aria-hidden="true">✕</span>
+              </button>
+            </div>
+          </header>
+
+          <div class="dp-modal-body">
+            <!-- VIEW 1: DIAGNOSTIC CHECK (Default launched by banner) -->
+            <div id="dpViewCheck" class="dp-view dp-view-active">
+              <div class="dp-view-header">
+                <span class="dp-section-step-tag">03 / DIGITAL PRESENCE CHECK</span>
+                <h3 id="dpModalTitle" class="dp-view-title">A quick check. A clearer direction.</h3>
+                <p class="dp-view-subtitle">Five questions. Around two minutes.</p>
+              </div>
+
+              <div class="dp-check-card">
+                <!-- Progress indicator -->
+                <div class="dp-progress-wrap">
+                  <span class="dp-progress-label" id="dpProgressLabel">QUESTION 01 / 05</span>
+                  <div class="dp-progress-bars" aria-hidden="true">
+                    <div class="dp-prog-bar dp-prog-active" data-step="1"></div>
+                    <div class="dp-prog-bar" data-step="2"></div>
+                    <div class="dp-prog-bar" data-step="3"></div>
+                    <div class="dp-prog-bar" data-step="4"></div>
+                    <div class="dp-prog-bar" data-step="5"></div>
+                  </div>
+                </div>
+
+                <!-- Question Container -->
+                <div class="dp-question-container" id="dpQuestionContainer">
+                  <h4 class="dp-question-title" id="dpQuestionTitle">Does your business have a website?</h4>
+                  <div class="dp-options-list" id="dpOptionsList" role="radiogroup" aria-labelledby="dpQuestionTitle">
+                    <!-- Populated dynamically -->
+                  </div>
+                </div>
+
+                <!-- Check Controls -->
+                <div class="dp-check-footer">
+                  <button type="button" class="btn-dp-secondary" id="dpBtnBack" style="visibility: hidden;">
+                    ← BACK
+                  </button>
+                  <button type="button" class="btn btn-dp-primary" id="dpBtnNext" disabled>
+                    NEXT →
+                  </button>
+                </div>
+              </div>
+
+              <div class="dp-secondary-link-wrap">
+                <button type="button" class="dp-text-link" id="dpLinkToOverview">Or explore the section overview →</button>
+              </div>
+            </div>
+
+            <!-- VIEW 2: RESULTS SCREEN + LEAD FORM -->
+            <div id="dpViewResults" class="dp-view">
+              <div class="dp-view-header">
+                <span class="dp-section-step-tag">04 / ASSESSMENT SNAPSHOT</span>
+                <h3 class="dp-view-title">Your Digital Presence Snapshot</h3>
+                <p class="dp-view-subtitle">Based on your answers, these are the areas worth exploring:</p>
+              </div>
+
+              <!-- Dynamic Recommendation Cards -->
+              <div class="dp-recommendations-grid" id="dpRecommendationsGrid">
+                <!-- Dynamically populated -->
+              </div>
+
+              <!-- Mandatory Disclosure -->
+              <div class="dp-disclosure-box">
+                <p class="dp-disclosure-text">
+                  <strong>Initial Assessment:</strong> This snapshot is based on self-reported answers, not a technical website audit. No invented scores or promises.
+                </p>
+              </div>
+
+              <!-- Lead Capture Form -->
+              <div class="dp-lead-form-wrapper">
+                <div class="dp-lead-header">
+                  <h4 class="dp-lead-title">Let’s put our brains on it.</h4>
+                  <p class="dp-lead-body">You’ve identified a few opportunities. Let’s explore what they could mean for your business.</p>
+                </div>
+
+                <form id="dpLeadForm" class="dp-lead-form" novalidate>
+                  <div class="dp-form-row dp-form-row-duo">
+                    <div class="dp-form-group">
+                      <label for="dpLeadName" class="dp-label">YOUR NAME <span class="req">*</span></label>
+                      <input type="text" id="dpLeadName" class="dp-input" placeholder="Your full name" required>
+                      <span class="dp-field-error" id="dpNameError">Please enter your name.</span>
+                    </div>
+                    <div class="dp-form-group">
+                      <label for="dpLeadCompany" class="dp-label">BUSINESS / COMPANY <span class="req">*</span></label>
+                      <input type="text" id="dpLeadCompany" class="dp-input" placeholder="Business or brand name" required>
+                      <span class="dp-field-error" id="dpCompanyError">Please enter your company or business name.</span>
+                    </div>
+                  </div>
+
+                  <div class="dp-form-group">
+                    <label for="dpLeadEmail" class="dp-label">EMAIL <span class="req">*</span></label>
+                    <input type="email" id="dpLeadEmail" class="dp-input" placeholder="you@company.com" required>
+                    <span class="dp-field-error" id="dpEmailError">Please enter a valid email address.</span>
+                  </div>
+
+                  <div class="dp-form-group">
+                    <label for="dpLeadNotes" class="dp-label">ANYTHING ELSE WE SHOULD KNOW?</label>
+                    <textarea id="dpLeadNotes" class="dp-textarea" rows="3" placeholder="Context about your business, current tools, or specific goals (optional)"></textarea>
+                  </div>
+
+                  <div class="dp-consent-group">
+                    <label class="dp-checkbox-label">
+                      <input type="checkbox" id="dpLeadConsent" class="dp-checkbox" required>
+                      <span class="dp-checkbox-custom" aria-hidden="true"></span>
+                      <span class="dp-consent-text">I agree to be contacted about my assessment and understand how my information will be used.</span>
+                    </label>
+                    <span class="dp-field-error" id="dpConsentError">Please check the box to confirm consent.</span>
+                  </div>
+
+                  <div class="dp-form-submit-wrap">
+                    <button type="submit" class="btn btn-dp-primary" id="dpBtnSubmitLead">
+                      REQUEST A PERSONALIZED REVIEW →
+                    </button>
+                  </div>
+
+                  <div class="dp-form-feedback" id="dpFormFeedback" role="status" aria-live="polite" hidden></div>
+                </form>
+
+                <div class="dp-results-actions">
+                  <button type="button" class="btn-dp-text" id="dpBtnRetakeQuiz">↺ Retake 2-Minute Check</button>
+                  <button type="button" class="btn-dp-text" id="dpBtnViewLiveProjectFromResults">Explore Live Project 001 →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIEW 3: SECTION OVERVIEW (digital3.png) -->
+            <div id="dpViewOverview" class="dp-view">
+              <div class="dp-view-header">
+                <span class="dp-section-step-tag">02 / SECTION OVERVIEW</span>
+                <h3 class="dp-view-title">Digital Presence</h3>
+                <p class="dp-view-subtitle">Explore what we can build — and how we build it.</p>
+              </div>
+
+              <div class="dp-overview-cards-grid">
+                <!-- Card A: Digital Presence Check -->
+                <div class="dp-overview-card">
+                  <div class="dp-card-meta">01 / DISCOVER</div>
+                  <h4 class="dp-card-title">Digital Presence Check</h4>
+                  <p class="dp-card-desc">Find opportunities for your business. Answer five quick questions to identify opportunities for your business.</p>
+                  <button type="button" class="btn btn-dp-primary dp-card-btn" id="dpBtnStartCheckFromOverview">
+                    TAKE THE 2-MINUTE CHECK →
+                  </button>
+                </div>
+
+                <!-- Card B: Live Project 001 -->
+                <div class="dp-overview-card">
+                  <div class="dp-card-meta">02 / FOLLOW</div>
+                  <h4 class="dp-card-title">Live Project 001</h4>
+                  <p class="dp-card-desc">See how we build and improve this website. Follow the strategy, development, and improvements behind this website.</p>
+                  <button type="button" class="btn btn-dp-primary dp-card-btn" id="dpBtnExploreLiveFromOverview">
+                    EXPLORE THE LIVE PROJECT →
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIEW 4: LIVE PROJECT 001 -->
+            <div id="dpViewLiveProject" class="dp-view">
+              <div class="dp-view-header">
+                <span class="dp-section-step-tag">05 / LIVE PROJECT 001</span>
+                <h3 class="dp-view-title">What happens when a creative strategist and a developer put their brains together?</h3>
+                <p class="dp-view-subtitle">
+                  We’re making our own website our first live project. From strategy and creative direction to development, search visibility and automation, we’ll document what we build, what we improve and what we learn along the way.
+                </p>
+              </div>
+
+              <div class="dp-tracker-list">
+                <div class="dp-tracker-item">
+                  <div class="dp-tracker-header">
+                    <h4 class="dp-tracker-category">Communication strategy</h4>
+                    <span class="dp-status-badge dp-status-in-progress">In Progress</span>
+                  </div>
+                  <p class="dp-tracker-note">Strategic narrative architecture, clear positioning statement, and audience-first copy hierarchy refined across all sections.</p>
+                </div>
+
+                <div class="dp-tracker-item">
+                  <div class="dp-tracker-header">
+                    <h4 class="dp-tracker-category">Creative direction &amp; visual identity</h4>
+                    <span class="dp-status-badge dp-status-complete">Complete</span>
+                  </div>
+                  <p class="dp-tracker-note">Four-tier Inter typography system, dual cream &amp; bone color architecture, custom grid layouts, and visual direction finalized.</p>
+                </div>
+
+                <div class="dp-tracker-item">
+                  <div class="dp-tracker-header">
+                    <h4 class="dp-tracker-category">Website design &amp; development</h4>
+                    <span class="dp-status-badge dp-status-in-progress">In Progress</span>
+                  </div>
+                  <p class="dp-tracker-note">Fully responsive single-page architecture, interactive case study viewer, live radio stream integration, and interactive diagnostic check module.</p>
+                </div>
+
+                <div class="dp-tracker-item">
+                  <div class="dp-tracker-header">
+                    <h4 class="dp-tracker-category">Search engine optimization (SEO)</h4>
+                    <span class="dp-status-badge dp-status-in-progress">In Progress</span>
+                  </div>
+                  <p class="dp-tracker-note">Semantic HTML5 structure, structured metadata, search indexing hierarchy, and asset optimization for Core Web Vitals performance.</p>
+                </div>
+
+                <div class="dp-tracker-item">
+                  <div class="dp-tracker-header">
+                    <h4 class="dp-tracker-category">Performance &amp; analytics</h4>
+                    <span class="dp-status-badge dp-status-in-progress">In Progress</span>
+                  </div>
+                  <p class="dp-tracker-note">High-DPI optimized asset pipeline, zero external frameworks, lightweight JavaScript runtime, and privacy-respecting interaction tracking.</p>
+                </div>
+
+                <div class="dp-tracker-item">
+                  <div class="dp-tracker-header">
+                    <h4 class="dp-tracker-category">Business automation</h4>
+                    <span class="dp-status-badge dp-status-pending">Pending</span>
+                  </div>
+                  <p class="dp-tracker-note">Lead triage pipeline, automated assessment synthesis, and structured consultation booking workflow in active architectural design.</p>
+                </div>
+
+                <div class="dp-tracker-item">
+                  <div class="dp-tracker-header">
+                    <h4 class="dp-tracker-category">Results &amp; improvements</h4>
+                    <span class="dp-status-badge dp-status-pending">Pending</span>
+                  </div>
+                  <p class="dp-tracker-note">Aggregated traffic performance, diagnostic completion analytics, and continuous iteration logs will be published as empirical data is gathered.</p>
+                </div>
+              </div>
+
+              <div class="dp-live-project-footer">
+                <button type="button" class="btn btn-dp-primary" id="dpBtnStartCheckFromLive">
+                  TAKE THE 2-MINUTE CHECK →
+                </button>
+                <button type="button" class="btn-dp-secondary" id="dpBtnBackToOverviewFromLive">
+                  ← Back to Overview
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SELECTED WORK (Color B) -->
     <section id="work" class="section section-work section-light">
       <div class="container">
@@ -231,18 +512,6 @@
               <span class="gateway-num">05</span>
               <h3 class="gateway-title">HARINA P.A.N.</h3>
               <p class="gateway-discipline">Strategic Content · Editorial Thinking</p>
-            </div>
-          </a>
-
-          <!-- 06: DIGITAL PRESENCE -->
-          <a href="#case-digital-presence" class="gateway-card gateway-card-trigger" data-case="case-digital-presence">
-            <div class="gateway-media">
-              <img src="assets/media/digital-presence/digital-presence-4x3.svg" alt="06 DIGITAL PRESENCE" loading="lazy" class="gateway-img">
-            </div>
-            <div class="gateway-info">
-              <span class="gateway-num">06</span>
-              <h3 class="gateway-title">DIGITAL PRESENCE</h3>
-              <p class="gateway-discipline">Product Strategy · AI Engineering</p>
             </div>
           </a>
 
@@ -774,92 +1043,7 @@
                 <a href="#work" class="back-to-gateway">↑ Back to Selected Work</a>
               </div>
               <div class="footer-nav-right">
-                <a href="#case-digital-presence" class="nav-next-case gateway-card-trigger" data-case="case-digital-presence">Next Case: 06 DIGITAL PRESENCE →</a>
-              </div>
-            </footer>
-          </article>
-
-          <!-- CASE STUDY 06: DIGITAL PRESENCE -->
-          <article id="case-digital-presence" class="project-case-study project-anchor-target" data-case-title="CASE STUDY 06: DIGITAL PRESENCE">
-            <header class="case-study-header">
-              <div class="case-study-top-meta">
-                <span class="case-study-tag visually-hidden" data-case-study="06">CASE STUDY 06</span>
-                <span class="case-study-disciplines">PRODUCT STRATEGY · DECENTRALIZED CREATIVE · AI ENGINEERING</span>
-              </div>
-              <div class="case-study-title-wrap">
-                <h3 class="case-study-title">DIGITAL PRESENCE</h3>
-                <h4 class="case-study-headline">From code to culture: building living digital ecosystems.</h4>
-                <p class="case-study-sublead">
-                  How we engineered this portfolio — and how we build living digital platforms for founders, brands, and companies using AI-augmented workflows, multidisciplinary talent, and decentralized version control.
-                </p>
-              </div>
-            </header>
-
-            <!-- BLOQUE 1 — THE STRATEGIC PARADOX & THE SYSTEM PIPELINE -->
-            <div class="case-study-block">
-              <div class="case-study-strategy">
-                <div class="strategy-pillars-grid">
-                  <div class="strategy-pillar-card">
-                    <h6 class="pillar-title">THE PARADOX</h6>
-                    <p class="pillar-desc">
-                      Traditional web development is slow, fragmented, and disconnected from strategic brand narrative. Agencies divide strategy, design, and code into rigid silos — producing static, bloated websites that are obsolete the moment they launch.
-                    </p>
-                  </div>
-                  <div class="strategy-pillar-card">
-                    <h6 class="pillar-title">THE SYSTEM</h6>
-                    <p class="pillar-desc">
-                      A high-velocity, multidisciplinary model led by Valentina. By pairing senior brand leadership with autonomous AI code orchestration, modular design tokens, and Git-based continuous deployment, we compress months of development into precision execution cycles.
-                    </p>
-                  </div>
-                  <div class="strategy-pillar-card">
-                    <h6 class="pillar-title">THE SERVICE</h6>
-                    <p class="pillar-desc">
-                      A full-stack creative &amp; engineering offering for ventures, personal brands, and companies. We turn founder vision and brand identity into live, uncompromised web realities with zero agency overhead.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <figure class="case-study-media case-study-media-full case-study-media-wide">
-                <img src="assets/media/digital-presence/blueprint-workflow-pipeline.svg" alt="Digital Presence: AI-Augmented Workflow Pipeline from Strategy to Deployment" loading="lazy">
-                <figcaption class="media-caption">AI-AUGMENTED WORKFLOW · STRATEGY TO DEPLOYMENT PIPELINE</figcaption>
-              </figure>
-            </div>
-
-            <!-- BLOQUE 2 — DECENTRALIZATION & CLIENT SQUAD MODEL -->
-            <div class="case-study-block">
-              <div class="case-study-strategy">
-                <div class="strategy-pillars-grid">
-                  <div class="strategy-pillar-card">
-                    <h6 class="pillar-title">DECENTRALIZED TEAM</h6>
-                    <p class="pillar-desc">
-                      A curated squad of senior copywriters, visual designers, and AI developers assembled per project. Valentina directs the collective output, ensuring every touchpoint communicates with singular strategic intent.
-                    </p>
-                  </div>
-                  <div class="strategy-pillar-card">
-                    <h6 class="pillar-title">GIT-POWERED CLIENT HANDOVER</h6>
-                    <p class="pillar-desc">
-                      Full transparency, versioned commit history, and immutable Git records. Clients own their code, their assets, and their hosting infrastructure with zero proprietary lock-in.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <figure class="case-study-media case-study-media-full case-study-media-wide">
-                <img src="assets/media/digital-presence/blueprint-collaborative-ecosystem.svg" alt="Decentralized Collaboration Ecosystem &amp; Client Proposition" loading="lazy">
-                <figcaption class="media-caption">COLLABORATIVE ECOSYSTEM · DECENTRALIZED SQUAD &amp; LIVING PLATFORMS</figcaption>
-              </figure>
-            </div>
-
-            <footer class="case-study-footer-nav">
-              <div class="footer-nav-left">
-                <a href="#case-pan" class="nav-prev-case gateway-card-trigger" data-case="case-pan">← Previous: 05 HARINA P.A.N.</a>
-              </div>
-              <div class="footer-nav-center">
-                <a href="#work" class="back-to-gateway">↑ Back to Selected Work</a>
-              </div>
-              <div class="footer-nav-right">
-                <span class="case-study-badge">06 / 06</span>
+                <span class="case-study-badge">05 / 05</span>
               </div>
             </footer>
           </article>

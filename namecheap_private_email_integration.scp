@@ -1,0 +1,174 @@
+NAMECHEAP PRIVATE EMAIL & DNS AUTO-RESPONSE INTEGRATION GUIDE
+=============================================================
+Date: 2026-11-17
+Project: Valentina Alemán Portfolio (Digital Presence Assessment)
+Author: GitHub Copilot × Guillermo & Valentina
+
+1. OVERVIEW & OBJECTIVE
+-----------------------
+When a visitor completes the 5-question "Digital Presence Check" and submits the 
+lead form ("REQUEST A PERSONALIZED REVIEW"), the system should:
+  1. Receive the payload:
+     - Client details: Name, Company, Email, Notes
+     - 5 answers: Q1 (Website), Q2 (Visibility), Q3 (Objective), Q4 (Tasks), Q5 (Improvement)
+     - Triggered recommendations: Website Design & Development, SEO, Business Automation, or Fallback
+     - Timestamp
+  2. Send an instant, personalized confirmation email to the user via Namecheap Private Email (SMTP).
+  3. Send an internal notification email to Valentina (e.g. contact@valentinaaleman.com / valenalemanb@gmail.com) with the full client profile and diagnostic snapshot.
+
+Since the website is hosted on GitHub Pages (static front-end), the form submission needs a lightweight, secure serverless endpoint to dispatch the emails using Namecheap's SMTP credentials.
+
+
+2. NAMECHEAP PRIVATE EMAIL SMTP SPECIFICATIONS
+----------------------------------------------
+Domain: e.g. valentinaaleman.com (or your Namecheap registered domain)
+Mailbox: e.g. hello@valentinaaleman.com / contact@valentinaaleman.com
+
+SMTP Server Details:
+- SMTP Server Host: mail.privateemail.com
+- SMTP Port: 465 (SSL) or 587 (TLS/STARTTLS)
+- Authentication: Required (Username = full email address, Password = mailbox password)
+- Sender Address: e.g. "Valentina Alemán <contact@valentinaaleman.com>"
+
+
+3. NAMECHEAP DNS CONFIGURATION (CRITICAL FOR DELIVERABILITY)
+-----------------------------------------------------------
+In Namecheap cPanel or Advanced DNS dashboard for your domain, ensure these records are active:
+
+A. MX Records:
+   - Priority 10: mx1.privateemail.com
+   - Priority 10: mx2.privateemail.com
+
+B. SPF Record (TXT record on @):
+   - Type: TXT
+   - Host: @
+   - Value: v=spf1 include:spf.privateemail.com ~all
+
+C. DKIM Record:
+   - Enabled inside Namecheap Private Email settings (Generates a TXT record like default._domainkey).
+   - This prevents emails sent to users from landing in their Gmail/Outlook Spam folder.
+
+D. DMARC Record:
+   - Type: TXT
+   - Host: _dmarc
+   - Value: v=DMARC1; p=none; rua=mailto:admin@valentinaaleman.com
+
+
+4. RECOMMENDED IMPLEMENTATION ARCHITECTURES
+------------------------------------------
+
+OPTION A: Cloudflare Workers (Free, Fast, Zero Server Maintenance) - RECOMMENDED
+--------------------------------------------------------------------------------
+Cloudflare Workers has zero cold start, runs globally, and integrates directly with any SMTP or transactional API.
+
+Worker Code (worker.js):
+```javascript
+export default {
+  async fetch(request, env) {
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        headers: {
+          "Access-Control-Allow-Origin": "https://valentinaaleman.github.io",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+        },
+      });
+    }
+
+    if (request.method !== "POST") {
+      return new Response("Method Not Allowed", { status: 405 });
+    }
+
+    const data = await request.json();
+    const { client, answers, recommendations, timestamp } = data;
+
+    // Build the email body
+    const userEmailHtml = `
+      <div style="font-family: 'Inter', sans-serif; color: #151515; max-width: 600px; margin: 0 auto; padding: 24px; line-height: 1.6;">
+        <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">Your Digital Presence Snapshot</h2>
+        <p>Hi ${client.name},</p>
+        <p>Thank you for taking the 2-Minute Digital Presence Check. Here is the initial assessment generated for <strong>${client.company}</strong>:</p>
+        
+        <div style="background-color: #F5F5F0; border: 1px solid #E2E2DC; border-radius: 8px; padding: 18px; margin: 20px 0;">
+          <h3 style="font-size: 16px; margin-top: 0;">Identified Opportunities:</h3>
+          <ul>
+            ${recommendations.map(r => `<li><strong>${r.title}</strong>: ${r.desc}</li>`).join('')}
+          </ul>
+        </div>
+
+        <p>Valentina and Guillermo will review your specific answers and reach out to discuss next steps.</p>
+        
+        <p style="margin-top: 32px; font-size: 14px; color: #666660;">
+          Best regards,<br>
+          <strong>Valentina Alemán</strong><br>
+          Creative Strategist & Brand Director
+        </p>
+      </div>
+    `;
+
+    // Dispatch via SMTP or Resend/Brevo bound to Namecheap domain
+    // ...
+    
+    return new Response(JSON.stringify({ success: true }), {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "https://valentinaaleman.github.io",
+      },
+    });
+  }
+};
+```
+
+OPTION B: Formspree / EmailJS (No backend code required)
+--------------------------------------------------------
+1. Register on Formspree or EmailJS.
+2. In EmailJS: Connect your Namecheap Private Email account directly using SMTP host `mail.privateemail.com`, port `465`, your username and password.
+3. In EmailJS Dashboard: Create an auto-reply email template with dynamic placeholders `{{name}}`, `{{company}}`, `{{recommendations}}`.
+4. In `script.js`:
+   Replace the placeholder `console.info` with:
+   ```javascript
+   emailjs.send("service_namecheap", "template_snapshot_autoreply", {
+     to_name: leadName.value.trim(),
+     to_email: leadEmail.value.trim(),
+     company: leadCompany.value.trim(),
+     notes: leadNotes.value.trim(),
+     recommendations: generatedRecommendations.map(r => r.title).join(", ")
+   });
+   ```
+
+
+5. CLIENT-SIDE SCRIPT INTEGRATION POINT
+---------------------------------------
+In `/home/blackbox/valentina/script.js`:
+Inside `leadForm.addEventListener('submit', ...)`, around line 680:
+
+```javascript
+// Send data to endpoint
+fetch('https://api.valentinaaleman.com/api/assessment-submit', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(assessmentData)
+})
+.then(res => res.json())
+.then(data => {
+  btnSubmitLead.disabled = true;
+  btnSubmitLead.textContent = '✓ REQUEST SENT';
+  formFeedback.hidden = false;
+  formFeedback.className = 'dp-form-feedback is-success';
+  formFeedback.textContent = `Thank you, ${leadName.value.trim()} — your assessment snapshot has been emailed to ${leadEmail.value.trim()}. We will be in touch shortly.`;
+})
+.catch(err => {
+  formFeedback.hidden = false;
+  formFeedback.className = 'dp-form-feedback is-error';
+  formFeedback.textContent = 'An error occurred. Please try again or email valenalemanb@gmail.com directly.';
+});
+```
+
+
+6. CHECKLIST BEFORE ACTIVATING PRODUCTION EMAILS
+------------------------------------------------
+[ ] Namecheap Private Email inbox created and tested for inbound/outbound.
+[ ] SPF, DKIM, and DMARC TXT records verified in Namecheap DNS.
+[ ] Serverless endpoint (Cloudflare Worker or EmailJS) configured with SMTP credentials.
+[ ] Auto-reply template copy reviewed and approved by Valentina.
+[ ] End-to-end test submission executed and verified on Gmail, Apple Mail, and Outlook.
