@@ -78,7 +78,7 @@ function initCopyEmail() {
   const copyBtn = document.getElementById('copyEmailBtn');
   if (!copyBtn) return;
 
-  const originalText = copyBtn.querySelector('.copy-text')?.textContent || 'Copy Email Address';
+  const originalText = copyBtn.querySelector('.copy-text')?.textContent || 'Copiar';
   const emailToCopy = copyBtn.getAttribute('data-email') || 'valenalemanb@gmail.com';
 
   copyBtn.addEventListener('click', async () => {
@@ -86,7 +86,7 @@ function initCopyEmail() {
       await navigator.clipboard.writeText(emailToCopy);
       const textSpan = copyBtn.querySelector('.copy-text');
       if (textSpan) {
-        textSpan.textContent = '✓ Copied to clipboard!';
+        textSpan.textContent = '✓ ¡Copiado!';
         copyBtn.style.borderColor = 'var(--color-accent)';
         setTimeout(() => {
           textSpan.textContent = originalText;
@@ -369,45 +369,45 @@ function initDigitalPresenceModule() {
   // 5 Diagnostic Questions
   const questions = [
     {
-      title: 'Does your business have a website?',
+      title: '¿Tu negocio tiene un sitio web?',
       options: [
-        { label: 'Yes, and it is up to date', key: 'up_to_date' },
-        { label: 'Yes, but it needs improvement', key: 'needs_improvement' },
-        { label: 'Not yet', key: 'not_yet' }
+        { label: 'Sí, y está actualizado', key: 'up_to_date' },
+        { label: 'Sí, pero necesita mejoras', key: 'needs_improvement' },
+        { label: 'Todavía no', key: 'not_yet' }
       ]
     },
     {
-      title: 'How easily can customers find you online?',
+      title: '¿Qué tan fácil es para tus clientes encontrarte en línea?',
       options: [
-        { label: 'Very easily', key: 'very_easily' },
-        { label: 'I’m not sure', key: 'not_sure' },
-        { label: 'We struggle with visibility', key: 'struggle' }
+        { label: 'Muy fácil', key: 'very_easily' },
+        { label: 'No estoy seguro/a', key: 'not_sure' },
+        { label: 'Nos cuesta tener visibilidad', key: 'struggle' }
       ]
     },
     {
-      title: 'What is your website’s main objective?',
+      title: '¿Cuál es el objetivo principal de tu sitio web?',
       options: [
-        { label: 'Generate inquiries or leads', key: 'leads' },
-        { label: 'Sell products or services', key: 'sales' },
-        { label: 'Present our business', key: 'presentation' },
-        { label: 'We haven’t defined it', key: 'undefined' }
+        { label: 'Generar consultas o clientes potenciales', key: 'leads' },
+        { label: 'Vender productos o servicios', key: 'sales' },
+        { label: 'Presentar nuestro negocio', key: 'presentation' },
+        { label: 'Aún no lo hemos definido', key: 'undefined' }
       ]
     },
     {
-      title: 'How do you currently handle repetitive business tasks?',
+      title: '¿Cómo manejas actualmente las tareas repetitivas de tu negocio?',
       options: [
-        { label: 'Mostly automated', key: 'mostly_automated' },
-        { label: 'A mix of manual and automated', key: 'mix' },
-        { label: 'Mostly manual', key: 'mostly_manual' }
+        { label: 'Mayormente automatizadas', key: 'mostly_automated' },
+        { label: 'Una mezcla de manual y automatizado', key: 'mix' },
+        { label: 'Mayormente manual', key: 'mostly_manual' }
       ]
     },
     {
-      title: 'What would you most like to improve?',
+      title: '¿Qué es lo que más te gustaría mejorar?',
       options: [
-        { label: 'Website experience', key: 'website_experience' },
-        { label: 'Search visibility (SEO)', key: 'seo' },
-        { label: 'Business automation', key: 'automation' },
-        { label: 'Not sure yet', key: 'not_sure_yet' }
+        { label: 'Experiencia del sitio web', key: 'website_experience' },
+        { label: 'Visibilidad en búsquedas (SEO)', key: 'seo' },
+        { label: 'Automatización de negocios', key: 'automation' },
+        { label: 'No estoy seguro/a todavía', key: 'not_sure_yet' }
       ]
     }
   ];
@@ -467,7 +467,7 @@ function initDigitalPresenceModule() {
 
     // Update progress label and bars
     if (progressLabel) {
-      progressLabel.textContent = `QUESTION 0${stepIndex + 1} / 05`;
+      progressLabel.textContent = `PREGUNTA 0${stepIndex + 1} / 05`;
     }
 
     progressBars.forEach((bar, idx) => {
@@ -535,7 +535,7 @@ function initDigitalPresenceModule() {
 
     if (btnNext) {
       btnNext.disabled = userAnswers[stepIndex] === null;
-      btnNext.textContent = stepIndex === questions.length - 1 ? 'SEE MY RESULTS →' : 'NEXT →';
+      btnNext.textContent = stepIndex === questions.length - 1 ? 'VER MIS RESULTADOS →' : 'SIGUIENTE →';
     }
   }
 
@@ -557,9 +557,9 @@ function initDigitalPresenceModule() {
       q5 === 'website_experience'
     ) {
       recommendations.push({
-        tag: 'CORE INFRASTRUCTURE',
-        title: 'Website Design & Development',
-        desc: 'Your website experience or business objectives may benefit from further review.'
+        tag: 'INFRAESTRUCTURA PRINCIPAL',
+        title: 'Diseño & Desarrollo Web',
+        desc: 'La experiencia de tu sitio web o los objetivos de tu negocio podrían beneficiarse de una revisión estratégica.'
       });
     }
 
@@ -570,9 +570,9 @@ function initDigitalPresenceModule() {
       q5 === 'seo'
     ) {
       recommendations.push({
-        tag: 'ORGANIC DISCOVERY',
-        title: 'Search Engine Optimization (SEO)',
-        desc: 'Your search visibility may offer opportunities worth investigating.'
+        tag: 'DESCUBRIMIENTO ORGÁNICO',
+        title: 'Optimización para Motores de Búsqueda (SEO)',
+        desc: 'Tu visibilidad en búsquedas ofrece oportunidades claras que vale la pena explorar.'
       });
     }
 
@@ -583,18 +583,18 @@ function initDigitalPresenceModule() {
       q5 === 'automation'
     ) {
       recommendations.push({
-        tag: 'OPERATIONAL LEVERAGE',
-        title: 'Business Automation',
-        desc: 'Some repetitive processes may be candidates for automation.'
+        tag: 'APALANCAMIENTO OPERATIVO',
+        title: 'Automatización de Negocios',
+        desc: 'Algunos procesos repetitivos de tu negocio son candidatos ideales para ser automatizados.'
       });
     }
 
     // Rule 4: Fallback
     if (recommendations.length === 0) {
       recommendations.push({
-        tag: 'FOUNDATION REVIEW',
-        title: 'Explore Your Next Opportunity',
-        desc: 'Your answers suggest a solid starting point. A deeper review could identify further improvements.'
+        tag: 'REVISIÓN DE FUNDAMENTOS',
+        title: 'Explora Tu Próxima Oportunidad',
+        desc: 'Tus respuestas muestran una base sólida. Una revisión más profunda puede identificar optimizaciones clave.'
       });
     }
 
@@ -776,13 +776,13 @@ function initDigitalPresenceModule() {
       // UI Success feedback
       if (btnSubmitLead) {
         btnSubmitLead.disabled = true;
-        btnSubmitLead.textContent = '✓ REQUEST SENT';
+        btnSubmitLead.textContent = '✓ SOLICITUD ENVIADA';
       }
 
       if (formFeedback) {
         formFeedback.hidden = false;
         formFeedback.className = 'dp-form-feedback is-success';
-        formFeedback.textContent = `Thank you, ${leadName.value.trim()} — your assessment snapshot and request have been received. We will review your answers and be in touch shortly.`;
+        formFeedback.textContent = `Gracias, ${leadName.value.trim()} — hemos recibido tu diagnóstico y solicitud. Revisaremos tus respuestas y nos pondremos en contacto contigo a la brevedad.`;
       }
     });
 
