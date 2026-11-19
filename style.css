@@ -1929,15 +1929,15 @@ body {
 .digital-banner-headline-wrap {
   position: absolute;
   left: 6.22%;
-  top: 24.31%;
-  width: clamp(380px, 52%, 1150px);
+  top: 22%;
+  width: clamp(400px, 58%, 1200px);
 }
 
 .digital-banner-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3.32cqw, 3.4rem);
+  font-size: clamp(1.6rem, 4.2cqw, 4.4rem);
   font-weight: 500;
-  line-height: 1.22;
+  line-height: 1.18;
   letter-spacing: -0.025em;
   color: #1a1a18;
   margin: 0;
@@ -2797,8 +2797,8 @@ body {
   }
 
   .digital-banner-headline {
-    font-size: clamp(1.6rem, 5.8vw, 2.3rem);
-    line-height: 1.25;
+    font-size: clamp(1.85rem, 6.5vw, 2.75rem);
+    line-height: 1.22;
   }
 
   .banner-hl-line {
