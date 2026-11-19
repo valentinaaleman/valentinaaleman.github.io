@@ -1,0 +1,107 @@
+Te mando una guía completa con la estructura, las referencias de las pantallas, los textos, las cinco preguntas del diagnóstico, la lógica de resultados y el formulario final.
+
+**Aparte te envío dos imágenes del banner: image1.png image2.playing** la referencia visual aprobada, para que veas exactamente cómo debe quedar, y el PNG limpio, sin textos, para que puedas montar el titular y el botón como elementos editables.
+
+Vamos a arrancar con esto y después incorporamos al Live Project los avances y resultados reales que vayamos obteniendo. La idea es construirlo por etapas, con todo bien integrado y funcionando.
+DIGITAL PRESENCE
+Implementation guide  /  Valentina Alemán × Guillermo
+Website integration · English copy · Visual references · Interaction rules · Development sequence
+01  /  Placement and visitor journey
+Place the new Digital Presence banner immediately AFTER the existing “What I Bring” section, BEFORE the subsequent portfolio content. Preserve the approved hero, typography, palette, case studies, navigation and existing Contact section.
+Primary journey: What I Bring → banner → TAKE THE 2-MINUTE CHECK → five questions → personalized results → optional lead form. A secondary navigation option gives access to the Digital Presence overview and Live Project 001. The overview is NOT an obligatory intermediate step.
+02  /  Banner — approved visual reference (supplied separately)(digital1.png) and (digital2.png)
+APPROVED: Use the separate banner reference image provided by Valentina as the definitive visual direction. Do not use the previous banner mockup from this document; it has been withdrawn. Do not redesign the approved composition.
+Implementation asset: 01_BANNER_FONDO_SIN_TEXTO.png (supplied separately). Add the headline and CTA as editable website elements, matching the separately supplied APPROVED reference image.
+Exact headline: Is your digital presence working for you?
+Exact CTA: TAKE THE 2-MINUTE CHECK →
+CTA behavior: opens Question 1 directly. Provide a clear Back / Close route to the main website.
+
+03  /  Digital Presence overview (secondary entry)(digital3.png)
+
+Reference asset: 02_DIGITAL_PRESENCE_ENTRADA.png. This is a visual wireframe, not an approved final page. Two options: Digital Presence Check and Live Project 001.
+Headline: What could your digital presence do for your business?
+Supporting copy: Two ways to explore what’s possible: understand where your business stands, or see how we’re building our own digital presence.
+Option A: Digital Presence Check — Answer five quick questions to identify opportunities for your business. CTA: START THE CHECK →
+Option B: Live Project 001 — Follow the strategy, development and improvements behind this website. CTA: EXPLORE THE LIVE PROJECT →
+Navigation rule: The banner CTA bypasses this overview and opens the check directly. The overview remains accessible via secondary navigation from the check / live project.
+04  /  Digital Presence Check — UI and copy (digital4.png)
+
+
+Reference asset: 03_DIGITAL_PRESENCE_CHECK.png. Show one question at a time, single-choice options, a visible “Question X of 5” progress indicator, Back and Next. Disable Next until a choice is selected. Preserve answers when going back.
+Intro: Is your digital presence working for you?
+Description: Answer five quick questions to discover where your business could perform better online.
+1. Does your business have a website?
+    • Yes, and it’s up to date
+    • Yes, but it needs improvement
+    • Not yet
+2. How easily can customers find you online?
+    • Very easily
+    • I’m not sure
+    • We struggle with visibility
+3. What is your website’s main objective?
+    • Generate inquiries or leads
+    • Sell products or services
+    • Present our business
+    • We haven’t defined it
+4. How do you currently handle repetitive business tasks?
+    • Mostly automated
+    • A mix of manual and automated
+    • Mostly manual
+5. What would you most like to improve?
+    • Website experience
+    • Search visibility (SEO)
+    • Business automation
+    • Not sure yet
+Final button: SEE MY RESULTS →. Do not require contact details before displaying results.
+
+05  /  Results screen — copy and decision rules
+
+Reference asset: 04_DIGITAL_PRESENCE_RESULTADOS.png. Headline: Your Digital Presence Snapshot. Intro: Based on your answers, these are the areas worth exploring:
+Rules (multiple recommendations may appear)
+    • Website Design & Development: Q1 is “needs improvement” or “not yet”; OR Q3 is “We haven’t defined it”; OR Q5 is “Website experience”.
+    • SEO: Q2 is “I’m not sure” or “We struggle with visibility”; OR Q5 is “Search visibility (SEO)”.
+    • Business Automation: Q4 is “A mix of manual and automated” or “Mostly manual”; OR Q5 is “Business automation”.
+    • If no rule triggers, show: Explore Your Next Opportunity — Your answers suggest a solid starting point. A deeper review could identify further improvements.
+Recommendation descriptions
+Website Design & Development — Your website experience or business objectives may benefit from further review.
+Search Engine Optimization (SEO) — Your search visibility may offer opportunities worth investigating.
+Business Automation — Some repetitive processes may be candidates for automation.
+Disclosure: This is an initial assessment based on self-reported answers, not a technical website audit. No invented scores or promises.
+06  /  Lead form — after results
+Headline: Let’s put our brains on it.
+Body: You’ve identified a few opportunities. Let’s explore what they could mean for your business.
+    • YOUR NAME — required text field
+    • BUSINESS / COMPANY — required text field
+    • EMAIL — required, validated email
+    • ANYTHING ELSE WE SHOULD KNOW? — optional multiline field
+    • Unchecked consent checkbox — I agree to be contacted about my assessment and understand how my information will be used.
+    • Button: REQUEST A PERSONALIZED REVIEW →
+Implementation: send the visitor’s five answers, triggered recommendations, timestamp, and submitted contact details to an agreed secure destination. Display success/error states, prevent duplicate submissions, and link to an appropriate privacy notice. Do not publish personal responses in Live Project 001. No extra Contact section.
+
+07  /  Live Project 001 — secondary experience
+
+Reference asset: 05_LIVE_PROJECT_001.png. Intro headline: What happens when a creative strategist and a developer put their brains together?
+Body: We’re making our own website our first live project. From strategy and creative direction to development, search visibility and automation, we’ll document what we build, what we improve and what we learn along the way.
+Editable tracker categories (status must be verified with Guillermo before publishing):
+    • Communication strategy
+    • Creative direction & visual identity
+    • Website design & development
+    • Search engine optimization (SEO)
+    • Performance & analytics
+    • Business automation
+    • Results & improvements
+Each item: Pending / In Progress / Complete + a brief, factual note and optional evidence. Do not invent outcomes or present this collaboration as an established external case study.
+Phase 2: add actual aggregated metrics once available — e.g. organic traffic, search impressions, check completions, qualified inquiries and implemented automations. Never expose individual visitors’ answers or contact details.
+08  /  Implementation sequence and acceptance checklist
+    • 1. Place banner immediately after What I Bring; overlay editable copy and CTA on the clean PNG.
+    • 2. Build the five-question check; verify responsive layout, progress, Back/Next and answer persistence.
+    • 3. Implement results mapping, multi-recommendation behavior and fallback.
+    • 4. Add optional lead form, consent, secure delivery and confirmation/error states.
+    • 5. Implement secondary Digital Presence overview and Live Project 001 tracker.
+    • 6. Verify all status labels and actual project evidence with Valentina and Guillermo before publishing.
+    • 7. Preserve navigation to all existing case studies and the existing Contact section; no duplicates.
+    • 8. Keep English as the base language, all copy editable and architecture ready for later Spanish localization.
+    • 9. Test on desktop/mobile, keyboard interaction, validation and privacy handling.
+    • 10. Add real Live Project results only after sufficient tracking and evidence exist.
+Scope checkpoint for Guillermo: confirm technical feasibility and preferred solution for quiz state, lead delivery/storage, consent/privacy, tracker editing and analytics before development of those features.
+VISUAL RULE: The attached screens are layout references, not final approved artwork. Existing website visual identity takes precedence. Do not recreate or replace approved assets.
