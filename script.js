@@ -313,7 +313,7 @@ function initWhatIBringHover() {
  */
 function initDigitalPresenceModule() {
   const modal = document.getElementById('digital-presence-modal');
-  const openBannerBtn = document.getElementById('btnOpenDigitalCheck');
+  const openBannerBtn = document.getElementById('btnOpenDigitalBanner') || document.getElementById('btnOpenDigitalCheck');
   const closeBtn = document.getElementById('dpModalCloseBtn');
   const backdrop = document.getElementById('dpModalBackdrop');
 
@@ -335,6 +335,8 @@ function initDigitalPresenceModule() {
 
   // Cross-view Triggers
   const triggerToOverview = document.getElementById('dpLinkToOverview');
+  const triggerBackToOverviewFromCheck = document.getElementById('dpBtnBackToOverviewFromCheck');
+  const triggerBackToOverviewFromResults = document.getElementById('dpBtnBackToOverviewFromResults');
   const triggerStartCheckFromOverview = document.getElementById('dpBtnStartCheckFromOverview');
   const triggerExploreLiveFromOverview = document.getElementById('dpBtnExploreLiveFromOverview');
   const triggerStartCheckFromLive = document.getElementById('dpBtnStartCheckFromLive');
@@ -417,7 +419,7 @@ function initDigitalPresenceModule() {
   let generatedRecommendations = [];
 
   // Open & Close Modal
-  function openModal(initialView = 'check') {
+  function openModal(initialView = 'overview') {
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -467,7 +469,7 @@ function initDigitalPresenceModule() {
 
     // Update progress label and bars
     if (progressLabel) {
-      progressLabel.textContent = `PREGUNTA 0${stepIndex + 1} / 05`;
+      progressLabel.textContent = `PREGUNTA ${stepIndex + 1} DE ${totalSteps}`;
     }
 
     progressBars.forEach((bar, idx) => {
@@ -557,8 +559,8 @@ function initDigitalPresenceModule() {
       q5 === 'website_experience'
     ) {
       recommendations.push({
-        tag: 'INFRAESTRUCTURA PRINCIPAL',
-        title: 'Diseño & Desarrollo Web',
+        title: 'DISEÑO & DESARROLLO WEB',
+        tag: 'Así es como te van a recordar.',
         desc: 'La experiencia de tu sitio web o los objetivos de tu negocio podrían beneficiarse de una revisión estratégica.'
       });
     }
@@ -570,8 +572,8 @@ function initDigitalPresenceModule() {
       q5 === 'seo'
     ) {
       recommendations.push({
-        tag: 'DESCUBRIMIENTO ORGÁNICO',
-        title: 'Optimización para Motores de Búsqueda (SEO)',
+        title: 'OPTIMIZACIÓN PARA MOTORES DE BÚSQUEDA (SEO)',
+        tag: 'Así es como te van a encontrar.',
         desc: 'Tu visibilidad en búsquedas ofrece oportunidades claras que vale la pena explorar.'
       });
     }
@@ -583,8 +585,8 @@ function initDigitalPresenceModule() {
       q5 === 'automation'
     ) {
       recommendations.push({
-        tag: 'APALANCAMIENTO OPERATIVO',
-        title: 'Automatización de Negocios',
+        title: 'AUTOMATIZACIÓN DE NEGOCIOS',
+        tag: 'Así es como ahorras tiempo.',
         desc: 'Algunos procesos repetitivos de tu negocio son candidatos ideales para ser automatizados.'
       });
     }
@@ -592,8 +594,8 @@ function initDigitalPresenceModule() {
     // Rule 4: Fallback
     if (recommendations.length === 0) {
       recommendations.push({
-        tag: 'REVISIÓN DE FUNDAMENTOS',
-        title: 'Explora Tu Próxima Oportunidad',
+        title: 'OPTIMIZACIÓN CONTINUA',
+        tag: 'Así es como sigues creciendo.',
         desc: 'Tus respuestas muestran una base sólida. Una revisión más profunda puede identificar optimizaciones clave.'
       });
     }
@@ -607,20 +609,20 @@ function initDigitalPresenceModule() {
         const card = document.createElement('div');
         card.className = 'dp-rec-card';
 
-        const tag = document.createElement('span');
-        tag.className = 'dp-rec-card-tag';
-        tag.textContent = rec.tag;
-
         const title = document.createElement('h4');
         title.className = 'dp-rec-card-title';
         title.textContent = rec.title;
+
+        const tag = document.createElement('p');
+        tag.className = 'dp-rec-card-tag';
+        tag.textContent = rec.tag;
 
         const desc = document.createElement('p');
         desc.className = 'dp-rec-card-desc';
         desc.textContent = rec.desc;
 
-        card.appendChild(tag);
         card.appendChild(title);
+        card.appendChild(tag);
         card.appendChild(desc);
         recommendationsGrid.appendChild(card);
       });
@@ -649,10 +651,11 @@ function initDigitalPresenceModule() {
   }
 
   // View Triggers
-  openBannerBtn.addEventListener('click', () => {
-    openModal('check');
-    renderQuestionStep(0);
-  });
+  if (openBannerBtn) {
+    openBannerBtn.addEventListener('click', () => {
+      openModal('overview');
+    });
+  }
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (backdrop) backdrop.addEventListener('click', closeModal);
@@ -663,23 +666,12 @@ function initDigitalPresenceModule() {
     }
   });
 
-  // Nav buttons inside modal header
-  if (navBtns.overview) {
-    navBtns.overview.addEventListener('click', () => switchView('overview'));
-  }
-  if (navBtns.check) {
-    navBtns.check.addEventListener('click', () => {
-      switchView('check');
-      renderQuestionStep(currentStep);
-    });
-  }
-  if (navBtns.liveProject) {
-    navBtns.liveProject.addEventListener('click', () => switchView('liveProject'));
-  }
-
   // Cross-view action links
-  if (triggerToOverview) {
-    triggerToOverview.addEventListener('click', () => switchView('overview'));
+  if (triggerBackToOverviewFromCheck) {
+    triggerBackToOverviewFromCheck.addEventListener('click', () => switchView('overview'));
+  }
+  if (triggerBackToOverviewFromResults) {
+    triggerBackToOverviewFromResults.addEventListener('click', () => switchView('overview'));
   }
   if (triggerStartCheckFromOverview) {
     triggerStartCheckFromOverview.addEventListener('click', () => {
