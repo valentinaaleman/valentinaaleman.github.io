@@ -162,26 +162,13 @@
     </section>
 
     <!-- DIGITAL PRESENCE ENTRY BANNER (Placement: Immediately after What I Bring, before Work) -->
-    <section id="digital-presence" class="section-digital-banner" aria-label="Digital Presence Assessment">
+    <section id="digital-presence" class="section-digital-banner" aria-label="Digital Presence">
       <div class="container">
-        <div class="digital-banner-wrapper">
+        <button type="button" class="digital-banner-wrapper" id="btnOpenDigitalBanner" aria-label="Open Digital Presence">
           <div class="digital-banner-media">
-            <img src="assets/media/digital/digital2.png" alt="Digital Presence: Is your digital presence working for you?" class="digital-banner-bg-img" loading="lazy">
+            <img src="assets/media/digital/reference.png" alt="Is your digital presence working for you? Find out in 2 minutes" class="digital-banner-bg-img" loading="lazy">
           </div>
-          <div class="digital-banner-overlay">
-            <div class="digital-banner-headline-wrap">
-              <h2 class="digital-banner-headline">
-                <span class="banner-hl-line">Is your digital presence</span>
-                <span class="banner-hl-line">working for you?</span>
-              </h2>
-            </div>
-            <div class="digital-banner-action-wrap">
-              <button type="button" class="btn btn-digital-banner-cta" id="btnOpenDigitalCheck">
-                TAKE THE 2-MINUTE CHECK <span class="cta-arrow" aria-hidden="true">→</span>
-              </button>
-            </div>
-          </div>
-        </div>
+        </button>
       </div>
 
       <!-- INTERACTIVE DIGITAL PRESENCE MODULE (Modal Dialog) -->
@@ -195,29 +182,51 @@
               <span class="dp-brand-sep">/</span>
               <span class="dp-brand-section">DIGITAL PRESENCE</span>
             </div>
-            <div class="dp-modal-nav-actions">
-              <button type="button" class="dp-nav-link-btn" id="dpNavBtnOverview">Overview</button>
-              <button type="button" class="dp-nav-link-btn is-active" id="dpNavBtnCheck">Diagnostic Check</button>
-              <button type="button" class="dp-nav-link-btn" id="dpNavBtnLiveProject">Live Project 001</button>
-              <button type="button" class="dp-modal-close-btn" id="dpModalCloseBtn" aria-label="Close Digital Presence assessment">
-                <span class="dp-close-label">CLOSE</span> <span class="dp-close-icon" aria-hidden="true">✕</span>
-              </button>
-            </div>
+            <button type="button" class="dp-modal-close-btn" id="dpModalCloseBtn" aria-label="Close Digital Presence">
+              <span class="dp-close-icon" aria-hidden="true">✕</span>
+            </button>
           </header>
 
           <div class="dp-modal-body">
-            <!-- VIEW 1: DIAGNOSTIC CHECK (Default launched by banner) -->
-            <div id="dpViewCheck" class="dp-view dp-view-active">
+            <!-- VIEW 1: MAIN / DIGITAL PRESENCE -->
+            <div id="dpViewOverview" class="dp-view dp-view-active">
               <div class="dp-view-header">
-                <span class="dp-section-step-tag">03 / DIGITAL PRESENCE CHECK</span>
-                <h3 id="dpModalTitle" class="dp-view-title">A quick check. A clearer direction.</h3>
-                <p class="dp-view-subtitle">Five questions. Around two minutes.</p>
+                <h3 id="dpModalTitle" class="dp-view-title">DIGITAL PRESENCE</h3>
+                <p class="dp-view-subtitle">Explore what we can build and how we build it.</p>
+              </div>
+
+              <div class="dp-overview-cards-grid">
+                <!-- Card A: Discover Your Potential -->
+                <div class="dp-overview-card">
+                  <h4 class="dp-card-title">DISCOVER YOUR POTENTIAL</h4>
+                  <p class="dp-card-desc">Five questions to discover how you can improve your business's digital presence.</p>
+                  <button type="button" class="btn btn-dp-primary dp-card-btn" id="dpBtnStartCheckFromOverview">
+                    FIND OUT IN 2 MINUTES →
+                  </button>
+                </div>
+
+                <!-- Card B: Live Project -->
+                <div class="dp-overview-card">
+                  <h4 class="dp-card-title">LIVE PROJECT</h4>
+                  <p class="dp-card-desc">Discover how we apply strategy, creativity, and technology to build and improve our own website.</p>
+                  <button type="button" class="btn btn-dp-primary dp-card-btn" id="dpBtnExploreLiveFromOverview">
+                    EXPLORE THE PROJECT →
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIEW 2: QUESTIONNAIRE -->
+            <div id="dpViewCheck" class="dp-view">
+              <div class="dp-view-header">
+                <h3 class="dp-view-title">DISCOVER YOUR DIGITAL POTENTIAL</h3>
+                <p class="dp-view-subtitle">Five questions to discover opportunities to improve your digital presence.</p>
               </div>
 
               <div class="dp-check-card">
                 <!-- Progress indicator -->
                 <div class="dp-progress-wrap">
-                  <span class="dp-progress-label" id="dpProgressLabel">QUESTION 01 / 05</span>
+                  <span class="dp-progress-label" id="dpProgressLabel">QUESTION 1 OF 5</span>
                   <div class="dp-progress-bars" aria-hidden="true">
                     <div class="dp-prog-bar dp-prog-active" data-step="1"></div>
                     <div class="dp-prog-bar" data-step="2"></div>
@@ -247,16 +256,15 @@
               </div>
 
               <div class="dp-secondary-link-wrap">
-                <button type="button" class="dp-text-link" id="dpLinkToOverview">Or explore the section overview →</button>
+                <button type="button" class="dp-text-link" id="dpBtnBackToOverviewFromCheck">← Back to Digital Presence</button>
               </div>
             </div>
 
-            <!-- VIEW 2: RESULTS SCREEN + LEAD FORM -->
+            <!-- VIEW 3: RESULTS -->
             <div id="dpViewResults" class="dp-view">
               <div class="dp-view-header">
-                <span class="dp-section-step-tag">04 / ASSESSMENT SNAPSHOT</span>
-                <h3 class="dp-view-title">Your Digital Presence Snapshot</h3>
-                <p class="dp-view-subtitle">Based on your answers, these are the areas worth exploring:</p>
+                <h3 class="dp-view-title">YOUR DIGITAL OPPORTUNITIES</h3>
+                <p class="dp-view-subtitle">Based on your answers, these are the key areas where your digital presence can make the greatest impact.</p>
               </div>
 
               <!-- Dynamic Recommendation Cards -->
@@ -264,30 +272,23 @@
                 <!-- Dynamically populated -->
               </div>
 
-              <!-- Mandatory Disclosure -->
-              <div class="dp-disclosure-box">
-                <p class="dp-disclosure-text">
-                  <strong>Initial Assessment:</strong> This snapshot is based on self-reported answers, not a technical website audit. No invented scores or promises.
-                </p>
-              </div>
-
               <!-- Lead Capture Form -->
               <div class="dp-lead-form-wrapper">
                 <div class="dp-lead-header">
-                  <h4 class="dp-lead-title">Let’s put our brains on it.</h4>
-                  <p class="dp-lead-body">You’ve identified a few opportunities. Let’s explore what they could mean for your business.</p>
+                  <h4 class="dp-lead-title">PUT OUR BRAINS ON IT.</h4>
+                  <p class="dp-lead-body">Let's explore how we can improve your business's digital presence.</p>
                 </div>
 
                 <form id="dpLeadForm" class="dp-lead-form" novalidate>
                   <div class="dp-form-row dp-form-row-duo">
                     <div class="dp-form-group">
                       <label for="dpLeadName" class="dp-label">YOUR NAME <span class="req">*</span></label>
-                      <input type="text" id="dpLeadName" class="dp-input" placeholder="Your full name" required>
+                      <input type="text" id="dpLeadName" class="dp-input" placeholder="Your name" required>
                       <span class="dp-field-error" id="dpNameError">Please enter your name.</span>
                     </div>
                     <div class="dp-form-group">
                       <label for="dpLeadCompany" class="dp-label">BUSINESS / COMPANY <span class="req">*</span></label>
-                      <input type="text" id="dpLeadCompany" class="dp-input" placeholder="Business or brand name" required>
+                      <input type="text" id="dpLeadCompany" class="dp-input" placeholder="Company or business name" required>
                       <span class="dp-field-error" id="dpCompanyError">Please enter your company or business name.</span>
                     </div>
                   </div>
@@ -299,7 +300,7 @@
                   </div>
 
                   <div class="dp-form-group">
-                    <label for="dpLeadNotes" class="dp-label">ANYTHING ELSE WE SHOULD KNOW?</label>
+                    <label for="dpLeadNotes" class="dp-label">ANYTHING ELSE WE SHOULD KNOW? (OPTIONAL)</label>
                     <textarea id="dpLeadNotes" class="dp-textarea" rows="3" placeholder="Context about your business, current tools, or specific goals (optional)"></textarea>
                   </div>
 
@@ -322,51 +323,18 @@
                 </form>
 
                 <div class="dp-results-actions">
-                  <button type="button" class="btn-dp-text" id="dpBtnRetakeQuiz">↺ Retake 2-Minute Check</button>
-                  <button type="button" class="btn-dp-text" id="dpBtnViewLiveProjectFromResults">Explore Live Project 001 →</button>
+                  <button type="button" class="btn-dp-text" id="dpBtnRetakeQuiz">↺ Retake Questions</button>
+                  <button type="button" class="btn-dp-text" id="dpBtnBackToOverviewFromResults">← Back to Digital Presence</button>
+                  <button type="button" class="btn-dp-text" id="dpBtnViewLiveProjectFromResults">Explore Live Project →</button>
                 </div>
               </div>
             </div>
 
-            <!-- VIEW 3: SECTION OVERVIEW (digital3.png) -->
-            <div id="dpViewOverview" class="dp-view">
-              <div class="dp-view-header">
-                <span class="dp-section-step-tag">02 / SECTION OVERVIEW</span>
-                <h3 class="dp-view-title">Digital Presence</h3>
-                <p class="dp-view-subtitle">Explore what we can build — and how we build it.</p>
-              </div>
-
-              <div class="dp-overview-cards-grid">
-                <!-- Card A: Digital Presence Check -->
-                <div class="dp-overview-card">
-                  <div class="dp-card-meta">01 / DISCOVER</div>
-                  <h4 class="dp-card-title">Digital Presence Check</h4>
-                  <p class="dp-card-desc">Find opportunities for your business. Answer five quick questions to identify opportunities for your business.</p>
-                  <button type="button" class="btn btn-dp-primary dp-card-btn" id="dpBtnStartCheckFromOverview">
-                    TAKE THE 2-MINUTE CHECK →
-                  </button>
-                </div>
-
-                <!-- Card B: Live Project 001 -->
-                <div class="dp-overview-card">
-                  <div class="dp-card-meta">02 / FOLLOW</div>
-                  <h4 class="dp-card-title">Live Project 001</h4>
-                  <p class="dp-card-desc">See how we build and improve this website. Follow the strategy, development, and improvements behind this website.</p>
-                  <button type="button" class="btn btn-dp-primary dp-card-btn" id="dpBtnExploreLiveFromOverview">
-                    EXPLORE THE LIVE PROJECT →
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- VIEW 4: LIVE PROJECT 001 -->
+            <!-- VIEW 4: LIVE PROJECT -->
             <div id="dpViewLiveProject" class="dp-view">
               <div class="dp-view-header">
-                <span class="dp-section-step-tag">05 / LIVE PROJECT 001</span>
-                <h3 class="dp-view-title">What happens when a creative strategist and a developer put their brains together?</h3>
-                <p class="dp-view-subtitle">
-                  We’re making our own website our first live project. From strategy and creative direction to development, search visibility and automation, we’ll document what we build, what we improve and what we learn along the way.
-                </p>
+                <h3 class="dp-view-title">LIVE PROJECT</h3>
+                <p class="dp-view-subtitle">What happens when a creative strategist and a developer put their brains together?</p>
               </div>
 
               <div class="dp-tracker-list">
@@ -429,10 +397,10 @@
 
               <div class="dp-live-project-footer">
                 <button type="button" class="btn btn-dp-primary" id="dpBtnStartCheckFromLive">
-                  TAKE THE 2-MINUTE CHECK →
+                  DISCOVER YOUR POTENTIAL →
                 </button>
                 <button type="button" class="btn-dp-secondary" id="dpBtnBackToOverviewFromLive">
-                  ← Back to Overview
+                  ← Back to Digital Presence
                 </button>
               </div>
             </div>
