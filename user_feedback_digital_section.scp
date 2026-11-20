@@ -1,0 +1,130 @@
+
+**1. BANNER**
+- quitar el baner y boton de presencia digital y usar directamente /home/blackbox/valentina/assets/media/digital/referencia.png y 
+hacer que todo el banner sea clickcable. 
+- ¿Podemos agregar un efecto hover muy sutil? Propongo que, al pasar el cursor, la sombra de la planta se desplace apenas y el banner tenga una transición suave. Nada exagerado.
+- Al hacer clic en cualquier parte del banner debe abrirse primero la pantalla que actualmente llamamos «Resumen», no directamente el cuestionario.
+
+**2. PANTALLA PRINCIPAL — PRESENCIA DIGITAL**
+
+Esta será siempre la primera pantalla que se abra.
+
+- Eliminar el menú superior: Resumen / Diagnóstico / Proyecto en Vivo 001.
+- Sustituir «Cerrar» por una X discreta arriba a la derecha.
+- Eliminar todas las numeraciones decorativas.
+- Utilizar exactamente las mismas tipografías del resto de la web, incluyendo el texto «Valentina Alemán / Presencia Digital».
+
+Título principal:
+**PRESENCIA DIGITAL**
+
+Texto:
+Explora lo que podemos construir y cómo lo construimos.
+
+Mantener los dos cuadros actuales, sin números.
+
+**DESCUBRE TU POTENCIAL**
+
+Cinco preguntas para descubrir cómo puedes mejorar la presencia digital de tu negocio.
+
+Botón:
+DESCÚBRELO EN 2 MINUTOS →
+
+**PROYECTO EN VIVO**
+
+Descubre cómo aplicamos estrategia, creatividad y tecnología para construir y mejorar nuestra propia web.
+
+Botón:
+EXPLORA EL PROYECTO →
+
+Una pregunta: ¿podemos incorporar un fondo visual muy sutil a esta ventana, manteniendo el lenguaje gráfico del portfolio? Por ahora no hay que diseñarlo; primero quiero saber si es viable.
+
+**3. CUESTIONARIO**
+
+Mantener las cinco preguntas, sus respuestas y la lógica actual. Solo ajustamos los textos de presentación.
+
+Eliminar:
+Diagnóstico de Presencia Digital.
+
+Nuevo título:
+**DESCUBRE TU POTENCIAL DIGITAL**
+
+Descripción:
+Cinco preguntas para descubrir oportunidades de mejora en tu presencia digital.
+
+- Mantener la barra de progreso.
+- Mantener los botones para avanzar y retroceder.
+- Agregar una opción sencilla para volver a la pantalla principal de Presencia Digital.
+
+**4. RESULTADOS**
+
+Nuevo título:
+**TUS OPORTUNIDADES DIGITALES**
+
+Texto:
+Según tus respuestas, estas son las áreas que vale la pena explorar:
+
+Mantener las recomendaciones que aparecen según las respuestas, pero aumentar el tamaño de los títulos.
+
+**DISEÑO & DESARROLLO WEB**
+
+Así es como te van a recordar.
+
+**OPTIMIZACIÓN PARA MOTORES DE BÚSQUEDA (SEO)**
+
+Así es como te van a encontrar.
+
+**AUTOMATIZACIÓN DE NEGOCIOS**
+
+Así es como ahorras tiempo.
+
+Estas frases sustituyen las etiquetas actuales «Infraestructura principal», «Descubrimiento orgánico» y «Apalancamiento operativo».
+
+Mantener debajo las explicaciones específicas de cada recomendación.
+
+Eliminar el bloque visible de «Evaluación inicial» que explica que las respuestas no constituyen una auditoría técnica.
+
+**5. FORMULARIO**
+
+Mantener nuestro concepto:
+
+**PUT OUR BRAINS ON IT.**
+
+Esta frase nunca se traduce, tampoco en la versión en español.
+
+Texto debajo:
+Exploremos cómo podemos mejorar la presencia digital de tu negocio.
+
+Campos:
+- Tu nombre
+- Empresa / negocio
+- Correo electrónico
+- ¿Algo más que debamos saber? (opcional)
+
+Botón:
+SOLICITAR UNA REVISIÓN PERSONALIZADA →
+
+Mantener la casilla de consentimiento para contactar al usuario.
+
+**6. PROYECTO EN VIVO**
+
+- Eliminar «001». El título queda simplemente **PROYECTO EN VIVO**.
+- Mantener el seguimiento de avances y los estados reales del proyecto.
+- Utilizar como introducción:
+
+¿Qué pasa cuando una estratega creativa y un desarrollador unen sus mentes?
+
+Los resultados y las métricas reales los incorporaremos cuando tengamos datos.
+
+**7. NAVEGACIÓN GENERAL**
+
+El recorrido debe ser:
+
+Banner → Presencia Digital → Descubre tu potencial / Proyecto en vivo.
+
+Desde cualquiera de las dos opciones debe poder regresarse a Presencia Digital.
+
+La X cierra toda la ventana y devuelve al visitante al portfolio.
+
+Sin menú interno, sin numeraciones y sin modificar las demás secciones de la web.
+
+Todos los elementos deben conservar las tipografías y el lenguaje visual que ya estamos utilizando.
