@@ -361,6 +361,7 @@ function initDigitalPresenceModule() {
   const leadNotes = document.getElementById('dpLeadNotes');
   const leadConsent = document.getElementById('dpLeadConsent');
   const btnSubmitLead = document.getElementById('dpBtnSubmitLead');
+  const btnResendEye = document.getElementById('dpBtnResendEye');
   const formFeedback = document.getElementById('dpFormFeedback');
 
   const nameError = document.getElementById('dpNameError');
@@ -702,6 +703,15 @@ function initDigitalPresenceModule() {
   if (triggerRetakeQuiz) {
     triggerRetakeQuiz.addEventListener('click', () => {
       userAnswers.fill(null);
+      if (btnSubmitLead) {
+        btnSubmitLead.disabled = false;
+        btnSubmitLead.textContent = 'SOLICITAR UNA REVISIÓN PERSONALIZADA →';
+      }
+      if (formFeedback) {
+        formFeedback.hidden = true;
+        formFeedback.className = 'dp-form-feedback';
+        formFeedback.textContent = '';
+      }
       switchView('check');
       renderQuestionStep(0);
     });
@@ -826,6 +836,24 @@ function initDigitalPresenceModule() {
     if (leadConsent) {
       leadConsent.addEventListener('change', () => {
         if (consentError) consentError.classList.remove('is-visible');
+      });
+    }
+
+    if (btnResendEye) {
+      btnResendEye.addEventListener('click', () => {
+        if (btnSubmitLead) {
+          btnSubmitLead.disabled = false;
+          btnSubmitLead.textContent = 'SOLICITAR UNA REVISIÓN PERSONALIZADA →';
+        }
+        if (formFeedback) {
+          formFeedback.hidden = true;
+          formFeedback.className = 'dp-form-feedback';
+          formFeedback.textContent = '';
+        }
+        btnResendEye.classList.add('is-active');
+        setTimeout(() => {
+          btnResendEye.classList.remove('is-active');
+        }, 400);
       });
     }
   }
