@@ -373,47 +373,47 @@ function initDigitalPresenceModule() {
     {
       title: '¿Tu negocio tiene un sitio web?',
       options: [
-        { label: 'Sí, y está actualizado', key: 'up_to_date' },
-        { label: 'Sí, pero necesita mejoras', key: 'needs_improvement' },
-        { label: 'Todavía no', key: 'not_yet' }
+        { label: 'Sí — Y está actualizado', key: 'up_to_date' },
+        { label: 'Sí — Pero necesita mejoras', key: 'needs_improvement' },
+        { label: 'No — Todavía no tenemos sitio web', key: 'not_yet' }
       ]
     },
     {
       title: '¿Qué tan fácil es para tus clientes encontrarte en línea?',
       options: [
-        { label: 'Muy fácil', key: 'very_easily' },
-        { label: 'No estoy seguro/a', key: 'not_sure' },
-        { label: 'Nos cuesta tener visibilidad', key: 'struggle' }
+        { label: 'Muy fácil — Nos encuentran rápido en Google', key: 'very_easily' },
+        { label: 'No estoy seguro/a — Tenemos poca visibilidad', key: 'not_sure' },
+        { label: 'Difícil — Nos cuesta mucho tener visibilidad', key: 'struggle' }
       ]
     },
     {
       title: '¿Cuál es el objetivo principal de tu sitio web?',
       options: [
         { label: 'Generar consultas o clientes potenciales', key: 'leads' },
-        { label: 'Vender productos o servicios', key: 'sales' },
-        { label: 'Presentar nuestro negocio', key: 'presentation' },
+        { label: 'Vender productos o servicios directamente', key: 'sales' },
+        { label: 'Presentar nuestro negocio y servicios', key: 'presentation' },
         { label: 'Aún no lo hemos definido', key: 'undefined' }
       ]
     },
     {
       title: '¿Cómo manejas actualmente las tareas repetitivas de tu negocio?',
       options: [
-        { label: 'Mayormente automatizadas', key: 'mostly_automated' },
-        { label: 'Una mezcla de manual y automatizado', key: 'mix' },
+        { label: 'Mayormente automatizadas con herramientas digitales', key: 'mostly_automated' },
+        { label: 'Una mezcla de manual y digital', key: 'mix' },
         { label: 'Mayormente manual', key: 'mostly_manual' }
       ]
     },
     {
       title: '¿Qué es lo que más te gustaría mejorar?',
       options: [
-        { label: 'Experiencia del sitio web', key: 'website_experience' },
+        { label: 'Experiencia y diseño del sitio web', key: 'website_experience' },
         { label: 'Visibilidad en búsquedas (SEO)', key: 'seo' },
-        { label: 'Automatización de negocios', key: 'automation' },
-        { label: 'No estoy seguro/a todavía', key: 'not_sure_yet' }
+        { label: 'Automatización de negocios y flujos', key: 'automation' }
       ]
     }
   ];
 
+  const totalSteps = questions.length;
   let currentStep = 0;
   const userAnswers = [null, null, null, null, null];
   let generatedRecommendations = [];
@@ -519,12 +519,20 @@ function initDigitalPresenceModule() {
         label.appendChild(indicator);
         label.appendChild(text);
 
-        radio.addEventListener('change', () => {
+        const selectOption = () => {
+          radio.checked = true;
           userAnswers[stepIndex] = opt.key;
           optionsList.querySelectorAll('.dp-option-label').forEach((l) => l.classList.remove('is-selected'));
           label.classList.add('is-selected');
           if (btnNext) btnNext.disabled = false;
+        };
+
+        label.addEventListener('click', (e) => {
+          e.preventDefault();
+          selectOption();
         });
+
+        radio.addEventListener('change', selectOption);
 
         optionsList.appendChild(label);
       });
@@ -763,19 +771,45 @@ function initDigitalPresenceModule() {
         recommendations: generatedRecommendations
       };
 
-      console.info('Digital Presence Assessment Submitted:', assessmentData);
-
-      // UI Success feedback
       if (btnSubmitLead) {
         btnSubmitLead.disabled = true;
-        btnSubmitLead.textContent = '✓ SOLICITUD ENVIADA';
+        btnSubmitLead.textContent = 'ENVIANDO...';
       }
 
-      if (formFeedback) {
-        formFeedback.hidden = false;
-        formFeedback.className = 'dp-form-feedback is-success';
-        formFeedback.textContent = `Gracias, ${leadName.value.trim()} — hemos recibido tu diagnóstico y solicitud. Revisaremos tus respuestas y nos pondremos en contacto contigo a la brevedad.`;
-      }
+      fetch('https://valentina-lead-contact.guillejesus.workers.dev', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(assessmentData)
+      })
+      .then(async (res) => {
+        const data = await res.json();
+        if (res.ok && data.success) {
+          if (btnSubmitLead) {
+            btnSubmitLead.textContent = '✓ SOLICITUD ENVIADA';
+          }
+          if (formFeedback) {
+            formFeedback.hidden = false;
+            formFeedback.className = 'dp-form-feedback is-success';
+            formFeedback.textContent = `Gracias, ${leadName.value.trim()} — hemos recibido tu diagnóstico y te enviamos un correo de confirmación. Nos pondremos en contacto a la brevedad.`;
+          }
+        } else {
+          throw new Error(data.error || 'Error al procesar la solicitud');
+        }
+      })
+      .catch((err) => {
+        console.error('Submission error:', err);
+        if (btnSubmitLead) {
+          btnSubmitLead.disabled = false;
+          btnSubmitLead.textContent = 'REINTENTAR ENVÍO →';
+        }
+        if (formFeedback) {
+          formFeedback.hidden = false;
+          formFeedback.className = 'dp-form-feedback is-error';
+          formFeedback.textContent = 'Hubo un inconveniente al enviar tu solicitud. Por favor intenta de nuevo.';
+        }
+      });
     });
 
     // Clear field errors on input

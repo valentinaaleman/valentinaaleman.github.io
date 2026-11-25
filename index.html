@@ -241,7 +241,21 @@
                 <div class="dp-question-container" id="dpQuestionContainer">
                   <h4 class="dp-question-title" id="dpQuestionTitle">¿Tu negocio tiene un sitio web?</h4>
                   <div class="dp-options-list" id="dpOptionsList" role="radiogroup" aria-labelledby="dpQuestionTitle">
-                    <!-- Populated dynamically -->
+                    <label class="dp-option-label" for="dpOpt_0_0">
+                      <input type="radio" name="dp_question_0" id="dpOpt_0_0" class="dp-option-radio" value="up_to_date">
+                      <span class="dp-radio-indicator" aria-hidden="true"></span>
+                      <span class="dp-option-text">Sí — Y está actualizado</span>
+                    </label>
+                    <label class="dp-option-label" for="dpOpt_0_1">
+                      <input type="radio" name="dp_question_0" id="dpOpt_0_1" class="dp-option-radio" value="needs_improvement">
+                      <span class="dp-radio-indicator" aria-hidden="true"></span>
+                      <span class="dp-option-text">Sí — Pero necesita mejoras</span>
+                    </label>
+                    <label class="dp-option-label" for="dpOpt_0_2">
+                      <input type="radio" name="dp_question_0" id="dpOpt_0_2" class="dp-option-radio" value="not_yet">
+                      <span class="dp-radio-indicator" aria-hidden="true"></span>
+                      <span class="dp-option-text">No — Todavía no tenemos sitio web</span>
+                    </label>
                   </div>
                 </div>
 
@@ -1110,6 +1124,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2.2"></script>
 </body>
 </html>
