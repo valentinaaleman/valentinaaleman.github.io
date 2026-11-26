@@ -323,6 +323,7 @@ function initDigitalPresenceModule() {
   const views = {
     check: document.getElementById('dpViewCheck'),
     results: document.getElementById('dpViewResults'),
+    lead: document.getElementById('dpViewLead'),
     overview: document.getElementById('dpViewOverview'),
     liveProject: document.getElementById('dpViewLiveProject')
   };
@@ -343,6 +344,16 @@ function initDigitalPresenceModule() {
   const triggerBackToOverviewFromLive = document.getElementById('dpBtnBackToOverviewFromLive');
   const triggerRetakeQuiz = document.getElementById('dpBtnRetakeQuiz');
   const triggerViewLiveFromResults = document.getElementById('dpBtnViewLiveProjectFromResults');
+  const triggerGoToLead = document.getElementById('dpBtnGoToLead');
+  const triggerBackToResultsFromLead = document.getElementById('dpBtnBackToResultsFromLead');
+  const triggerBackToOverviewFromLead = document.getElementById('dpBtnBackToOverviewFromLead');
+  const triggerCloseSuccess = document.getElementById('dpBtnCloseSuccess');
+
+  // Lead Form & Success Container Elements
+  const leadFormContainer = document.getElementById('dpLeadFormContainer');
+  const leadSuccessState = document.getElementById('dpLeadSuccessState');
+  const successMessage = document.getElementById('dpSuccessMessage');
+  const leadNavActions = document.getElementById('dpLeadNavActions');
 
   // Quiz DOM Elements
   const progressLabel = document.getElementById('dpProgressLabel');
@@ -700,9 +711,32 @@ function initDigitalPresenceModule() {
   if (triggerBackToOverviewFromLive) {
     triggerBackToOverviewFromLive.addEventListener('click', () => switchView('overview'));
   }
+  if (triggerGoToLead) {
+    triggerGoToLead.addEventListener('click', () => switchView('lead'));
+  }
+  if (triggerBackToResultsFromLead) {
+    triggerBackToResultsFromLead.addEventListener('click', () => switchView('results'));
+  }
+  if (triggerBackToOverviewFromLead) {
+    triggerBackToOverviewFromLead.addEventListener('click', () => switchView('overview'));
+  }
+  if (triggerCloseSuccess) {
+    triggerCloseSuccess.addEventListener('click', () => {
+      closeModal();
+      setTimeout(() => {
+        if (leadFormContainer) leadFormContainer.hidden = false;
+        if (leadSuccessState) leadSuccessState.hidden = true;
+        if (leadNavActions) leadNavActions.hidden = false;
+        switchView('overview');
+      }, 400);
+    });
+  }
   if (triggerRetakeQuiz) {
     triggerRetakeQuiz.addEventListener('click', () => {
       userAnswers.fill(null);
+      if (leadFormContainer) leadFormContainer.hidden = false;
+      if (leadSuccessState) leadSuccessState.hidden = true;
+      if (leadNavActions) leadNavActions.hidden = false;
       if (btnSubmitLead) {
         btnSubmitLead.disabled = false;
         btnSubmitLead.textContent = 'SOLICITAR UNA REVISIÓN PERSONALIZADA →';
@@ -768,16 +802,29 @@ function initDigitalPresenceModule() {
 
       if (!isValid) return;
 
-      // Prepare payload
+      // Prepare detailed answers and payload
+      const formattedAnswers = questions.map((q, idx) => {
+        const answerKey = userAnswers[idx];
+        const option = q.options.find((opt) => opt.key === answerKey);
+        return {
+          question: q.title,
+          answer: option ? option.label : 'No respondida'
+        };
+      });
+
+      const clientNameVal = leadName.value.trim();
+      const clientCompanyVal = leadCompany.value.trim();
+
       const assessmentData = {
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().toLocaleString('es-ES', { timeZone: 'America/Caracas' }),
         client: {
-          name: leadName.value.trim(),
-          company: leadCompany.value.trim(),
+          name: clientNameVal,
+          company: clientCompanyVal,
           email: leadEmail.value.trim(),
           notes: leadNotes ? leadNotes.value.trim() : ''
         },
         answers: userAnswers,
+        detailedAnswers: formattedAnswers,
         recommendations: generatedRecommendations
       };
 
@@ -799,10 +846,13 @@ function initDigitalPresenceModule() {
           if (btnSubmitLead) {
             btnSubmitLead.textContent = '✓ SOLICITUD ENVIADA';
           }
-          if (formFeedback) {
-            formFeedback.hidden = false;
-            formFeedback.className = 'dp-form-feedback is-success';
-            formFeedback.textContent = `Gracias, ${leadName.value.trim()} — hemos recibido tu diagnóstico y te enviamos un correo de confirmación. Nos pondremos en contacto a la brevedad.`;
+          if (leadSuccessState && leadFormContainer) {
+            if (successMessage) {
+              successMessage.textContent = `Gracias, ${clientNameVal}. Ya recibimos tu información. Revisaremos las oportunidades identificadas y nos pondremos en contacto contigo por correo.`;
+            }
+            leadFormContainer.hidden = true;
+            leadSuccessState.hidden = false;
+            if (leadNavActions) leadNavActions.hidden = true;
           }
         } else {
           throw new Error(data.error || 'Error al procesar la solicitud');
@@ -841,6 +891,9 @@ function initDigitalPresenceModule() {
 
     if (btnResendEye) {
       btnResendEye.addEventListener('click', () => {
+        if (leadFormContainer) leadFormContainer.hidden = false;
+        if (leadSuccessState) leadSuccessState.hidden = true;
+        if (leadNavActions) leadNavActions.hidden = false;
         if (btnSubmitLead) {
           btnSubmitLead.disabled = false;
           btnSubmitLead.textContent = 'SOLICITAR UNA REVISIÓN PERSONALIZADA →';
