@@ -30,17 +30,6 @@
           <li><a href="#services" class="nav-link">What I Bring</a></li>
           <li><a href="#work" class="nav-link">Work</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
-          <li class="nav-radio-item">
-            <!-- Synphaera Radio Live Stream Player -->
-            <div class="radio-player-widget">
-              <button id="radioPlayBtn" class="radio-btn" aria-label="Toggle Radio Stream">
-                <span class="radio-status-dot"></span>
-                <span class="radio-label">Radio</span>
-                <span class="radio-icon" id="radioPlayIcon">▶</span>
-              </button>
-              <audio id="radioAudio" preload="none" referrerpolicy="no-referrer" src="https://ice6.somafm.com/synphaera-128-mp3"></audio>
-            </div>
-          </li>
         </ul>
       </nav>
     </div>
@@ -198,17 +187,17 @@
               <div class="dp-overview-cards-grid">
                 <!-- Card A: Discover Your Potential -->
                 <div class="dp-overview-card">
-                  <h4 class="dp-card-title">DISCOVER YOUR POTENTIAL</h4>
-                  <p class="dp-card-desc">Five questions to discover how you can improve your business's digital presence.</p>
+                  <h4 class="dp-card-title">Five questions to discover your digital potential</h4>
+                  <p class="dp-card-desc">A quick, clear assessment to identify opportunities for improvement in your business.</p>
                   <button type="button" class="btn btn-dp-primary dp-card-btn" id="dpBtnStartCheckFromOverview">
-                    FIND OUT IN 2 MINUTES →
+                    DISCOVER IT IN 2 MINUTES →
                   </button>
                 </div>
 
                 <!-- Card B: Live Project -->
                 <div class="dp-overview-card">
-                  <h4 class="dp-card-title">LIVE PROJECT</h4>
-                  <p class="dp-card-desc">Discover how we apply strategy, creativity, and technology to build and improve our own website.</p>
+                  <h4 class="dp-card-title">Check out our live project</h4>
+                  <p class="dp-card-desc">Explore how we apply strategy, creativity and technology to our own website.</p>
                   <button type="button" class="btn btn-dp-primary dp-card-btn" id="dpBtnExploreLiveFromOverview">
                     EXPLORE THE PROJECT →
                   </button>
@@ -219,8 +208,8 @@
             <!-- VIEW 2: QUESTIONNAIRE -->
             <div id="dpViewCheck" class="dp-view">
               <div class="dp-view-header">
-                <h3 class="dp-view-title">DISCOVER YOUR DIGITAL POTENTIAL</h3>
-                <p class="dp-view-subtitle">Five questions to discover opportunities to improve your digital presence.</p>
+                <h3 class="dp-view-title">Discover your digital potential</h3>
+                <p class="dp-view-subtitle">Five questions to identify opportunities for improvement.</p>
               </div>
 
               <div class="dp-check-card">
@@ -240,7 +229,21 @@
                 <div class="dp-question-container" id="dpQuestionContainer">
                   <h4 class="dp-question-title" id="dpQuestionTitle">Does your business have a website?</h4>
                   <div class="dp-options-list" id="dpOptionsList" role="radiogroup" aria-labelledby="dpQuestionTitle">
-                    <!-- Populated dynamically -->
+                    <label class="dp-option-label" for="dpOpt_0_0">
+                      <input type="radio" name="dp_question_0" id="dpOpt_0_0" class="dp-option-radio" value="up_to_date">
+                      <span class="dp-radio-indicator" aria-hidden="true"></span>
+                      <span class="dp-option-text">Yes — And it is up to date</span>
+                    </label>
+                    <label class="dp-option-label" for="dpOpt_0_1">
+                      <input type="radio" name="dp_question_0" id="dpOpt_0_1" class="dp-option-radio" value="needs_improvement">
+                      <span class="dp-radio-indicator" aria-hidden="true"></span>
+                      <span class="dp-option-text">Yes — But it needs improvement</span>
+                    </label>
+                    <label class="dp-option-label" for="dpOpt_0_2">
+                      <input type="radio" name="dp_question_0" id="dpOpt_0_2" class="dp-option-radio" value="not_yet">
+                      <span class="dp-radio-indicator" aria-hidden="true"></span>
+                      <span class="dp-option-text">No — We don't have a website yet</span>
+                    </label>
                   </div>
                 </div>
 
@@ -272,126 +275,165 @@
                 <!-- Dynamically populated -->
               </div>
 
-              <!-- Lead Capture Form -->
-              <div class="dp-lead-form-wrapper">
-                <div class="dp-lead-header">
-                  <h4 class="dp-lead-title">PUT OUR BRAINS ON IT.</h4>
-                  <p class="dp-lead-body">Let's explore how we can improve your business's digital presence.</p>
-                </div>
-
-                <form id="dpLeadForm" class="dp-lead-form" novalidate>
-                  <div class="dp-form-row dp-form-row-duo">
-                    <div class="dp-form-group">
-                      <label for="dpLeadName" class="dp-label">YOUR NAME <span class="req">*</span></label>
-                      <input type="text" id="dpLeadName" class="dp-input" placeholder="Your name" required>
-                      <span class="dp-field-error" id="dpNameError">Please enter your name.</span>
-                    </div>
-                    <div class="dp-form-group">
-                      <label for="dpLeadCompany" class="dp-label">BUSINESS / COMPANY <span class="req">*</span></label>
-                      <input type="text" id="dpLeadCompany" class="dp-input" placeholder="Company or business name" required>
-                      <span class="dp-field-error" id="dpCompanyError">Please enter your company or business name.</span>
-                    </div>
-                  </div>
-
-                  <div class="dp-form-group">
-                    <label for="dpLeadEmail" class="dp-label">EMAIL <span class="req">*</span></label>
-                    <input type="email" id="dpLeadEmail" class="dp-input" placeholder="you@company.com" required>
-                    <span class="dp-field-error" id="dpEmailError">Please enter a valid email address.</span>
-                  </div>
-
-                  <div class="dp-form-group">
-                    <label for="dpLeadNotes" class="dp-label">ANYTHING ELSE WE SHOULD KNOW? (OPTIONAL)</label>
-                    <textarea id="dpLeadNotes" class="dp-textarea" rows="3" placeholder="Context about your business, current tools, or specific goals (optional)"></textarea>
-                  </div>
-
-                  <div class="dp-consent-group">
-                    <label class="dp-checkbox-label">
-                      <input type="checkbox" id="dpLeadConsent" class="dp-checkbox" required>
-                      <span class="dp-checkbox-custom" aria-hidden="true"></span>
-                      <span class="dp-consent-text">I agree to be contacted about my assessment and understand how my information will be used.</span>
-                    </label>
-                    <span class="dp-field-error" id="dpConsentError">Please check the box to confirm consent.</span>
-                  </div>
-
-                  <div class="dp-form-submit-wrap">
-                    <button type="submit" class="btn btn-dp-primary" id="dpBtnSubmitLead">
-                      REQUEST A PERSONALIZED REVIEW →
-                    </button>
-                  </div>
-
-                  <div class="dp-form-feedback" id="dpFormFeedback" role="status" aria-live="polite" hidden></div>
-                </form>
-
+              <!-- Main CTA to open Form Screen & Secondary Navigation -->
+              <div class="dp-results-cta-block">
+                <button type="button" class="btn btn-dp-primary dp-btn-cta-main" id="dpBtnGoToLead">
+                  PUT OUR BRAINS ON IT. →
+                </button>
                 <div class="dp-results-actions">
-                  <button type="button" class="btn-dp-text" id="dpBtnRetakeQuiz">↺ Retake Questions</button>
                   <button type="button" class="btn-dp-text" id="dpBtnBackToOverviewFromResults">← Back to Digital Presence</button>
-                  <button type="button" class="btn-dp-text" id="dpBtnViewLiveProjectFromResults">Explore Live Project →</button>
+                  <button type="button" class="btn-dp-text" id="dpBtnRetakeQuiz">↺ Retake Questions</button>
                 </div>
               </div>
             </div>
 
-            <!-- VIEW 4: LIVE PROJECT -->
+            <!-- VIEW 4: CONTACT FORM -->
+            <div id="dpViewLead" class="dp-view">
+              <div class="dp-lead-form-wrapper">
+                <!-- Active Form State -->
+                <div id="dpLeadFormContainer">
+                  <div class="dp-lead-header">
+                    <h3 class="dp-lead-title">PUT OUR BRAINS ON IT.</h3>
+                    <p class="dp-lead-body">Let's explore how we can improve your business's digital presence.</p>
+                  </div>
+
+                  <form id="dpLeadForm" class="dp-lead-form" novalidate>
+                    <div class="dp-form-row dp-form-row-duo">
+                      <div class="dp-form-group">
+                        <label for="dpLeadName" class="dp-label">YOUR NAME <span class="req">*</span></label>
+                        <input type="text" id="dpLeadName" class="dp-input" placeholder="Your name" required>
+                        <span class="dp-field-error" id="dpNameError">Please enter your name.</span>
+                      </div>
+                      <div class="dp-form-group">
+                        <label for="dpLeadCompany" class="dp-label">COMPANY / BUSINESS <span class="req">*</span></label>
+                        <input type="text" id="dpLeadCompany" class="dp-input" placeholder="Company or business name" required>
+                        <span class="dp-field-error" id="dpCompanyError">Please enter your company or business name.</span>
+                      </div>
+                    </div>
+
+                    <div class="dp-form-group">
+                      <label for="dpLeadEmail" class="dp-label">EMAIL ADDRESS <span class="req">*</span></label>
+                      <input type="email" id="dpLeadEmail" class="dp-input" placeholder="you@company.com" required>
+                      <span class="dp-field-error" id="dpEmailError">Please enter a valid email address.</span>
+                    </div>
+
+                    <div class="dp-form-group">
+                      <label for="dpLeadNotes" class="dp-label">ANYTHING ELSE WE SHOULD KNOW? (OPTIONAL)</label>
+                      <textarea id="dpLeadNotes" class="dp-textarea" rows="3" placeholder="Context about your business, current tools, or specific goals (optional)"></textarea>
+                    </div>
+
+                    <div class="dp-consent-group">
+                      <label class="dp-checkbox-label">
+                        <input type="checkbox" id="dpLeadConsent" class="dp-checkbox" required>
+                        <span class="dp-checkbox-custom" aria-hidden="true"></span>
+                        <span class="dp-consent-text">I agree to be contacted about my assessment and understand how my information will be used.</span>
+                      </label>
+                      <span class="dp-field-error" id="dpConsentError">Please check the box to confirm consent.</span>
+                    </div>
+
+                    <div class="dp-form-submit-wrap">
+                      <button type="submit" class="btn btn-dp-primary" id="dpBtnSubmitLead">
+                        REQUEST A CUSTOM REVIEW →
+                      </button>
+                      <button type="button" class="btn-dp-eye-resend" id="dpBtnResendEye" title="Reactivate / Resend test form" aria-label="Reactivate form to resend">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div class="dp-form-feedback" id="dpFormFeedback" role="status" aria-live="polite" hidden></div>
+                  </form>
+                </div>
+
+                <!-- Confirmation Box (Web Confirmation after successful submit) -->
+                <div id="dpLeadSuccessState" class="dp-lead-success-state" hidden>
+                  <div class="dp-success-icon-wrap" aria-hidden="true">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <h4 class="dp-success-title">REQUEST RECEIVED!</h4>
+                  <p class="dp-success-body" id="dpSuccessMessage">
+                    Thank you. We have received your information. We will review the identified opportunities and get in touch with you via email.
+                  </p>
+                  <div class="dp-success-btn-wrap">
+                    <button type="button" class="btn btn-dp-primary" id="dpBtnCloseSuccess">
+                      BACK TO WEBSITE →
+                    </button>
+                  </div>
+                </div>
+
+                <div class="dp-results-actions" id="dpLeadNavActions">
+                  <button type="button" class="btn-dp-text" id="dpBtnBackToResultsFromLead">← Back to Opportunities</button>
+                  <button type="button" class="btn-dp-text" id="dpBtnBackToOverviewFromLead">← Back to Digital Presence</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIEW 5: LIVE PROJECT -->
             <div id="dpViewLiveProject" class="dp-view">
               <div class="dp-view-header">
                 <h3 class="dp-view-title">LIVE PROJECT</h3>
-                <p class="dp-view-subtitle">What happens when a creative strategist and a developer put their brains together?</p>
+                <p class="dp-view-subtitle">What happens when a creative strategist and a developer put their minds together?</p>
               </div>
 
               <div class="dp-tracker-list">
                 <div class="dp-tracker-item">
                   <div class="dp-tracker-header">
-                    <h4 class="dp-tracker-category">Communication strategy</h4>
-                    <span class="dp-status-badge dp-status-in-progress">In Progress</span>
+                    <h4 class="dp-tracker-category">Communication Strategy</h4>
+                    <span class="dp-status-badge dp-status-in-progress">IN PROGRESS</span>
                   </div>
-                  <p class="dp-tracker-note">Strategic narrative architecture, clear positioning statement, and audience-first copy hierarchy refined across all sections.</p>
+                  <p class="dp-tracker-note">Strategic narrative architecture, clear positioning and audience-focused content hierarchy.</p>
                 </div>
 
                 <div class="dp-tracker-item">
                   <div class="dp-tracker-header">
-                    <h4 class="dp-tracker-category">Creative direction &amp; visual identity</h4>
-                    <span class="dp-status-badge dp-status-complete">Complete</span>
+                    <h4 class="dp-tracker-category">Creative Direction &amp; Visual Identity</h4>
+                    <span class="dp-status-badge dp-status-complete">COMPLETED</span>
                   </div>
-                  <p class="dp-tracker-note">Four-tier Inter typography system, dual cream &amp; bone color architecture, custom grid layouts, and visual direction finalized.</p>
+                  <p class="dp-tracker-note">Four-level Inter typography system, cream and off-white palette, grid-based layouts and finalized visual direction.</p>
                 </div>
 
                 <div class="dp-tracker-item">
                   <div class="dp-tracker-header">
-                    <h4 class="dp-tracker-category">Website design &amp; development</h4>
-                    <span class="dp-status-badge dp-status-in-progress">In Progress</span>
+                    <h4 class="dp-tracker-category">Website Design &amp; Development</h4>
+                    <span class="dp-status-badge dp-status-in-progress">IN PROGRESS</span>
                   </div>
-                  <p class="dp-tracker-note">Fully responsive single-page architecture, interactive case study viewer, live radio stream integration, and interactive diagnostic check module.</p>
+                  <p class="dp-tracker-note">Fully responsive one-page website featuring interactive case studies and a digital assessment module.</p>
                 </div>
 
                 <div class="dp-tracker-item">
                   <div class="dp-tracker-header">
-                    <h4 class="dp-tracker-category">Search engine optimization (SEO)</h4>
-                    <span class="dp-status-badge dp-status-in-progress">In Progress</span>
+                    <h4 class="dp-tracker-category">Search Engine Optimization (SEO)</h4>
+                    <span class="dp-status-badge dp-status-in-progress">IN PROGRESS</span>
                   </div>
-                  <p class="dp-tracker-note">Semantic HTML5 structure, structured metadata, search indexing hierarchy, and asset optimization for Core Web Vitals performance.</p>
+                  <p class="dp-tracker-note">Semantic HTML5 structure, metadata, indexing hierarchy and resource optimization for Core Web Vitals.</p>
                 </div>
 
                 <div class="dp-tracker-item">
                   <div class="dp-tracker-header">
-                    <h4 class="dp-tracker-category">Performance &amp; analytics</h4>
-                    <span class="dp-status-badge dp-status-in-progress">In Progress</span>
+                    <h4 class="dp-tracker-category">Performance &amp; Analytics</h4>
+                    <span class="dp-status-badge dp-status-in-progress">IN PROGRESS</span>
                   </div>
-                  <p class="dp-tracker-note">High-DPI optimized asset pipeline, zero external frameworks, lightweight JavaScript runtime, and privacy-respecting interaction tracking.</p>
+                  <p class="dp-tracker-note">High-resolution image optimization, lightweight code and privacy-conscious interaction tracking.</p>
                 </div>
 
                 <div class="dp-tracker-item">
                   <div class="dp-tracker-header">
-                    <h4 class="dp-tracker-category">Business automation</h4>
-                    <span class="dp-status-badge dp-status-pending">Pending</span>
+                    <h4 class="dp-tracker-category">Business Automation</h4>
+                    <span class="dp-status-badge dp-status-pending">PENDING</span>
                   </div>
-                  <p class="dp-tracker-note">Lead triage pipeline, automated assessment synthesis, and structured consultation booking workflow in active architectural design.</p>
+                  <p class="dp-tracker-note">Contact intake workflow, automated assessment summaries and a structured consultation booking process.</p>
                 </div>
 
                 <div class="dp-tracker-item">
                   <div class="dp-tracker-header">
-                    <h4 class="dp-tracker-category">Results &amp; improvements</h4>
-                    <span class="dp-status-badge dp-status-pending">Pending</span>
+                    <h4 class="dp-tracker-category">Results &amp; Improvements</h4>
+                    <span class="dp-status-badge dp-status-pending">PENDING</span>
                   </div>
-                  <p class="dp-tracker-note">Aggregated traffic performance, diagnostic completion analytics, and continuous iteration logs will be published as empirical data is gathered.</p>
+                  <p class="dp-tracker-note">Aggregated traffic performance, analysis of completed assessments and ongoing interaction records based on real data.</p>
                 </div>
               </div>
 
@@ -404,6 +446,7 @@
                 </button>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -1109,6 +1152,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2.2"></script>
 </body>
 </html>

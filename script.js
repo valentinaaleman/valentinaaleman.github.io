@@ -6,70 +6,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   initCopyEmail();
   initScrollSpy();
-  initRadioPlayer();
   initCaseStudiesViewer();
   initWhatIBringHover();
   initDigitalPresenceModule();
 });
-
-/**
- * Real-time Live Radio Player (MangoRadio2)
- */
-function initRadioPlayer() {
-  const audio = document.getElementById('radioAudio');
-  const playBtn = document.getElementById('radioPlayBtn');
-  const playIcon = document.getElementById('radioPlayIcon');
-
-  if (!audio || !playBtn || !playIcon) return;
-
-  // Set default volume (reduced 30% more from 0.5 to 0.2)
-  audio.volume = 0.2;
-  audio.referrerPolicy = 'no-referrer';
-
-  // Synphaera Radio (Space Music) from SomaFM
-  const STREAM_URL = 'https://ice6.somafm.com/synphaera-128-mp3';
-  // MANGO radio stream (saved for later):
-  // const STREAM_URL = 'https://stream.laut.fm/mangoradio';
-
-  function playStream() {
-    if (!audio.getAttribute('src')) {
-      audio.src = STREAM_URL;
-      audio.load();
-    }
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          playBtn.classList.add('playing');
-          playIcon.textContent = '❚❚';
-        })
-        .catch((err) => {
-          // Autoplay blocked by browser policy until user gesture
-          console.warn('Autoplay blocked, awaiting user click:', err);
-          playBtn.classList.remove('playing');
-          playIcon.textContent = '▶';
-        });
-    }
-  }
-
-  function pauseStream() {
-    audio.pause();
-    audio.removeAttribute('src');
-    audio.load();
-    playBtn.classList.remove('playing');
-    playIcon.textContent = '▶';
-  }
-
-  // Toggle button click
-  playBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (audio.paused || !audio.getAttribute('src')) {
-      playStream();
-    } else {
-      pauseStream();
-    }
-  });
-}
 
 /**
  * Copy email to clipboard with UI feedback
@@ -323,6 +263,7 @@ function initDigitalPresenceModule() {
   const views = {
     check: document.getElementById('dpViewCheck'),
     results: document.getElementById('dpViewResults'),
+    lead: document.getElementById('dpViewLead'),
     overview: document.getElementById('dpViewOverview'),
     liveProject: document.getElementById('dpViewLiveProject')
   };
@@ -343,6 +284,16 @@ function initDigitalPresenceModule() {
   const triggerBackToOverviewFromLive = document.getElementById('dpBtnBackToOverviewFromLive');
   const triggerRetakeQuiz = document.getElementById('dpBtnRetakeQuiz');
   const triggerViewLiveFromResults = document.getElementById('dpBtnViewLiveProjectFromResults');
+  const triggerGoToLead = document.getElementById('dpBtnGoToLead');
+  const triggerBackToResultsFromLead = document.getElementById('dpBtnBackToResultsFromLead');
+  const triggerBackToOverviewFromLead = document.getElementById('dpBtnBackToOverviewFromLead');
+  const triggerCloseSuccess = document.getElementById('dpBtnCloseSuccess');
+
+  // Lead Form & Success Container Elements
+  const leadFormContainer = document.getElementById('dpLeadFormContainer');
+  const leadSuccessState = document.getElementById('dpLeadSuccessState');
+  const successMessage = document.getElementById('dpSuccessMessage');
+  const leadNavActions = document.getElementById('dpLeadNavActions');
 
   // Quiz DOM Elements
   const progressLabel = document.getElementById('dpProgressLabel');
@@ -361,6 +312,7 @@ function initDigitalPresenceModule() {
   const leadNotes = document.getElementById('dpLeadNotes');
   const leadConsent = document.getElementById('dpLeadConsent');
   const btnSubmitLead = document.getElementById('dpBtnSubmitLead');
+  const btnResendEye = document.getElementById('dpBtnResendEye');
   const formFeedback = document.getElementById('dpFormFeedback');
 
   const nameError = document.getElementById('dpNameError');
@@ -373,9 +325,9 @@ function initDigitalPresenceModule() {
     {
       title: 'Does your business have a website?',
       options: [
-        { label: 'Yes, and it is up to date', key: 'up_to_date' },
-        { label: 'Yes, but it needs improvement', key: 'needs_improvement' },
-        { label: 'Not yet', key: 'not_yet' }
+        { label: 'Yes — And it is up to date', key: 'up_to_date' },
+        { label: 'Yes — But it needs improvement', key: 'needs_improvement' },
+        { label: "No — We don't have a website yet", key: 'not_yet' }
       ]
     },
     {
@@ -408,12 +360,12 @@ function initDigitalPresenceModule() {
       options: [
         { label: 'Website experience', key: 'website_experience' },
         { label: 'Search visibility (SEO)', key: 'seo' },
-        { label: 'Business automation', key: 'automation' },
-        { label: 'Not sure yet', key: 'not_sure_yet' }
+        { label: 'Business automation', key: 'automation' }
       ]
     }
   ];
 
+  const totalSteps = questions.length;
   let currentStep = 0;
   const userAnswers = [null, null, null, null, null];
   let generatedRecommendations = [];
@@ -469,7 +421,7 @@ function initDigitalPresenceModule() {
 
     // Update progress label and bars
     if (progressLabel) {
-      progressLabel.textContent = `QUESTION ${stepIndex + 1} OF ${questions.length}`;
+      progressLabel.textContent = `QUESTION ${stepIndex + 1} OF ${totalSteps}`;
     }
 
     progressBars.forEach((bar, idx) => {
@@ -519,12 +471,20 @@ function initDigitalPresenceModule() {
         label.appendChild(indicator);
         label.appendChild(text);
 
-        radio.addEventListener('change', () => {
+        const selectOption = () => {
+          radio.checked = true;
           userAnswers[stepIndex] = opt.key;
           optionsList.querySelectorAll('.dp-option-label').forEach((l) => l.classList.remove('is-selected'));
           label.classList.add('is-selected');
           if (btnNext) btnNext.disabled = false;
+        };
+
+        label.addEventListener('click', (e) => {
+          e.preventDefault();
+          selectOption();
         });
+
+        radio.addEventListener('change', selectOption);
 
         optionsList.appendChild(label);
       });
@@ -691,9 +651,41 @@ function initDigitalPresenceModule() {
   if (triggerBackToOverviewFromLive) {
     triggerBackToOverviewFromLive.addEventListener('click', () => switchView('overview'));
   }
+  if (triggerGoToLead) {
+    triggerGoToLead.addEventListener('click', () => switchView('lead'));
+  }
+  if (triggerBackToResultsFromLead) {
+    triggerBackToResultsFromLead.addEventListener('click', () => switchView('results'));
+  }
+  if (triggerBackToOverviewFromLead) {
+    triggerBackToOverviewFromLead.addEventListener('click', () => switchView('overview'));
+  }
+  if (triggerCloseSuccess) {
+    triggerCloseSuccess.addEventListener('click', () => {
+      closeModal();
+      setTimeout(() => {
+        if (leadFormContainer) leadFormContainer.hidden = false;
+        if (leadSuccessState) leadSuccessState.hidden = true;
+        if (leadNavActions) leadNavActions.hidden = false;
+        switchView('overview');
+      }, 400);
+    });
+  }
   if (triggerRetakeQuiz) {
     triggerRetakeQuiz.addEventListener('click', () => {
       userAnswers.fill(null);
+      if (leadFormContainer) leadFormContainer.hidden = false;
+      if (leadSuccessState) leadSuccessState.hidden = true;
+      if (leadNavActions) leadNavActions.hidden = false;
+      if (btnSubmitLead) {
+        btnSubmitLead.disabled = false;
+        btnSubmitLead.textContent = 'REQUEST A CUSTOM REVIEW →';
+      }
+      if (formFeedback) {
+        formFeedback.hidden = true;
+        formFeedback.className = 'dp-form-feedback';
+        formFeedback.textContent = '';
+      }
       switchView('check');
       renderQuestionStep(0);
     });
@@ -750,32 +742,74 @@ function initDigitalPresenceModule() {
 
       if (!isValid) return;
 
-      // Prepare payload
+      // Prepare detailed answers and payload
+      const formattedAnswers = questions.map((q, idx) => {
+        const answerKey = userAnswers[idx];
+        const option = q.options.find((opt) => opt.key === answerKey);
+        return {
+          question: q.title,
+          answer: option ? option.label : 'Not answered'
+        };
+      });
+
+      const clientNameVal = leadName.value.trim();
+      const clientCompanyVal = leadCompany.value.trim();
+
       const assessmentData = {
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().toLocaleString('es-ES', { timeZone: 'America/Caracas' }),
         client: {
-          name: leadName.value.trim(),
-          company: leadCompany.value.trim(),
+          name: clientNameVal,
+          company: clientCompanyVal,
           email: leadEmail.value.trim(),
           notes: leadNotes ? leadNotes.value.trim() : ''
         },
         answers: userAnswers,
+        detailedAnswers: formattedAnswers,
         recommendations: generatedRecommendations
       };
 
-      console.info('Digital Presence Assessment Submitted:', assessmentData);
-
-      // UI Success feedback
       if (btnSubmitLead) {
         btnSubmitLead.disabled = true;
-        btnSubmitLead.textContent = '✓ REQUEST SENT';
+        btnSubmitLead.textContent = 'SENDING...';
       }
 
-      if (formFeedback) {
-        formFeedback.hidden = false;
-        formFeedback.className = 'dp-form-feedback is-success';
-        formFeedback.textContent = `Thank you, ${leadName.value.trim()} — your assessment snapshot and request have been received. We will review your answers and be in touch shortly.`;
-      }
+      fetch('https://valentina-lead-contact.guillejesus.workers.dev', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(assessmentData)
+      })
+      .then(async (res) => {
+        const data = await res.json();
+        if (res.ok && data.success) {
+          if (btnSubmitLead) {
+            btnSubmitLead.textContent = '✓ REQUEST SENT';
+          }
+          if (leadSuccessState && leadFormContainer) {
+            if (successMessage) {
+              successMessage.textContent = `Thank you, ${clientNameVal}. We have received your information. We will review the identified opportunities and get in touch with you via email.`;
+            }
+            leadFormContainer.hidden = true;
+            leadSuccessState.hidden = false;
+            if (leadNavActions) leadNavActions.hidden = true;
+          }
+        } else {
+          throw new Error(data.error || 'Error al procesar la solicitud');
+        }
+      })
+      .catch((err) => {
+        console.error('Submission error:', err);
+        if (btnSubmitLead) {
+          btnSubmitLead.disabled = false;
+          btnSubmitLead.textContent = 'RETRY SENDING →';
+        }
+        if (formFeedback) {
+          formFeedback.hidden = false;
+          formFeedback.className = 'dp-form-feedback is-error';
+          formFeedback.textContent = 'There was an issue submitting your request. Please try again.';
+        }
+      });
     });
 
     // Clear field errors on input
@@ -792,6 +826,27 @@ function initDigitalPresenceModule() {
     if (leadConsent) {
       leadConsent.addEventListener('change', () => {
         if (consentError) consentError.classList.remove('is-visible');
+      });
+    }
+
+    if (btnResendEye) {
+      btnResendEye.addEventListener('click', () => {
+        if (leadFormContainer) leadFormContainer.hidden = false;
+        if (leadSuccessState) leadSuccessState.hidden = true;
+        if (leadNavActions) leadNavActions.hidden = false;
+        if (btnSubmitLead) {
+          btnSubmitLead.disabled = false;
+          btnSubmitLead.textContent = 'REQUEST A CUSTOM REVIEW →';
+        }
+        if (formFeedback) {
+          formFeedback.hidden = true;
+          formFeedback.className = 'dp-form-feedback';
+          formFeedback.textContent = '';
+        }
+        btnResendEye.classList.add('is-active');
+        setTimeout(() => {
+          btnResendEye.classList.remove('is-active');
+        }, 400);
       });
     }
   }
